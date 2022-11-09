@@ -7,9 +7,13 @@ using std::vector;
 
 
 
+#define nodes = 6;
+
+
+
 struct {
-    int num_nodes;
-    vector<int> adj[];
+    int num_nodes = 6;
+    vector<int> adj[6];
 } GraphVariable; 
 
 
@@ -26,10 +30,11 @@ void CreateGraphCircle(vector<int> adj[], int num_nodes){
         adj[u].push_back(v);
         adj[v].push_back(u);
         }
+    }
+}
 
-  }
-
-  for (int v = 0; v < num_nodes; ++v) { //For hver vertex v ... 
+void PrintGraph(vector<int> adj[], int num_nodes) {
+    for (int v = 0; v < num_nodes; ++v) { //For hver vertex v ... 
 		cout << "\n Adjacency list of vertex " << v
 			<< "\n head ";
 		for (auto x : adj[v]) //.. vil koden iterere gjennom lista i adj[v]
@@ -40,9 +45,8 @@ void CreateGraphCircle(vector<int> adj[], int num_nodes){
 }
 
 int main() {
-    GraphVariable.num_nodes = 6;
-    GraphVariable.adj[GraphVariable.num_nodes];
     CreateGraphCircle(GraphVariable.adj, GraphVariable.num_nodes);
+    PrintGraph(GraphVariable.adj, GraphVariable.num_nodes);
 }
 
 
