@@ -6,9 +6,7 @@ using namespace std;
 using std::vector;
 
 
-
 #define nodes = 6;
-
 
 
 struct {
@@ -45,14 +43,13 @@ void PrintGraph(vector<int> adj[], int num_nodes) {
 }
 
 void MakeMatrix(vector<int> adj[], int num_nodes){
-    //initializing
-    int rows = num_nodes;
-    int columns = num_nodes;
-    int matrice[rows][columns] = {0}; //initialize zero matix
 
-    for (int r = 0; r < rows; r++){
+    int matrice[6][6] = {0}; //initialize zero matix
 
-        for (int c = 0; c < columns; c++){
+
+    for (int r = 0; r < num_nodes; r++){
+
+        for (int c = 0; c < num_nodes; c++){
         
         //hvis rad og kolonne er like
         if (r == c){
