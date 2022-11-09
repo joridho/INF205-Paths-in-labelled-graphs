@@ -44,9 +44,43 @@ void PrintGraph(vector<int> adj[], int num_nodes) {
 
 }
 
+void MakeMatrix(vector<int> adj[], int num_nodes){
+    //initializing
+    int rows = num_nodes;
+    int columns = num_nodes;
+    int matrice[rows][columns] = {0}; //initialize zero matix
+
+    for (int r = 0; r < rows; r++){
+
+        for (int c = 0; c < columns; c++){
+        
+        //hvis rad og kolonne er like
+        if (r == c){
+            matrice[r][c] = 0;
+        }
+
+        //hvis node r er koblet til node c
+        else if (std::count(adj[r].begin(), adj[r].end(), c)) {
+            matrice[r][c] = 1;
+        }
+
+        //node r er ikke koblet til node c
+        else{
+            matrice[r][c] = 0;
+        }
+
+        //printer ut matrise
+        cout << matrice[r][c] << " ";
+        }
+    cout << endl;
+    }
+
+}
+
 int main() {
     CreateGraphCircle(GraphVariable.adj, GraphVariable.num_nodes);
     PrintGraph(GraphVariable.adj, GraphVariable.num_nodes);
+    MakeMatrix(GraphVariable.adj, GraphVariable.num_nodes);
 }
 
 
