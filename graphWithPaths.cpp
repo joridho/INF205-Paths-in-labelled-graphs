@@ -2,6 +2,7 @@
 // from a source to destination.
 #include <iostream>
 #include <list>
+#include <time.h>
 using namespace std;
 
 // A directed graph using
@@ -91,17 +92,27 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
 int main()
 {
 	// Create a graph given in the above diagram
-	Graph g(4);
+	int nodes = 4;
+	Graph g(nodes);
 	g.addEdge(0, 1);
 	g.addEdge(0, 2);
 	g.addEdge(0, 3);
 	g.addEdge(2, 1);
 	g.addEdge(1, 3);
 
-	int s = 3, d = 2;
-	cout << "Following are all different paths from " << s
-		<< " to " << d << endl;
-	g.printAllPaths(s, d);
+	int start1 =  rand() % nodes; 
+	int end1 = rand() % nodes;
+	int start2 =  rand() % nodes; 
+	int end2 = rand() % nodes;
+
+	cout << "Following are all different paths from " << start1
+		<< " to " << end1 << endl;
+	g.printAllPaths(start1, end1);
+
+	cout << "Following are all different paths from " << start2
+		<< " to " << end2 << endl;
+	g.printAllPaths(start2, end2);
+
 
 	return 0;
 }
