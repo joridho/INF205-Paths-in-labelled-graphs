@@ -29,6 +29,8 @@ Graph::Graph(int V)
 void Graph::addEdge(int u, int v)
 {
 	adj[u].push_back(v); // Add v to u’s list.
+	adj[v].push_back(u);
+
 }
 
 // Prints all paths from 's' to 'd'
@@ -93,11 +95,10 @@ int main()
 	g.addEdge(0, 1);
 	g.addEdge(0, 2);
 	g.addEdge(0, 3);
-	g.addEdge(2, 0);
 	g.addEdge(2, 1);
 	g.addEdge(1, 3);
 
-	int s = 2, d = 3;
+	int s = 3, d = 2;
 	cout << "Following are all different paths from " << s
 		<< " to " << d << endl;
 	g.printAllPaths(s, d);
