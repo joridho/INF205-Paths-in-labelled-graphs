@@ -16,6 +16,20 @@ void addEdge(vector<int> adj[], int u, int v) {
 	adj[v].push_back(u);
 }
 
+// A utility function to add an edge in an
+// undirected graph.
+void makegraph(vector<int> adj[], int num_nodes) {
+	//letter = rand() 
+	for (int i = 0; i < num_nodes; i+=3){
+		//addEdge(adj, u, v);
+		adj[i].push_back(i+1);
+		adj[i].push_back(i+2);
+		adj[i+1].push_back(i);
+		adj[i+2].push_back(i);
+	}
+
+}
+
 // A utility function to print the adjacency list
 // representation of graph
 void printGraph(vector<int> adj[], int V)
@@ -60,6 +74,30 @@ int main()
 {
 	int V = 5;
 	vector<int> adj[V];
+	makegraph(adj, V);
+	printGraph(adj, V);
+
+
+	vector<int> new_adj[V];
+
+	for (int i = 0; i < V; i+=3){
+		//addEdge(adj, u, v); s
+		new_adj[i].push_back(i+1);
+		new_adj[i].push_back(i+2);
+		new_adj[i+1].push_back(i);
+		new_adj[i+2].push_back(i);
+	}
+	for (int v = 0; v < V; ++v) { 
+		//For hver vertex v ... 
+
+		cout << "\n Adjacency list of vertex " << v
+			<< "\n head ";
+		for (auto x : adj[v]) //.. vil koden iterere gjennom lista i adj[v]
+			cout << "-> " << x;
+		printf("\n");
+	}
+
+	/*
 	addEdge(adj, 0, 1);
 	addEdge(adj, 0, 4);
 	addEdge(adj, 1, 2);
@@ -68,6 +106,9 @@ int main()
 	addEdge(adj, 2, 3);
 	addEdge(adj, 3, 4);
 	printGraph(adj, V);
+	*/
+
 	return 0;
 }
+
 
