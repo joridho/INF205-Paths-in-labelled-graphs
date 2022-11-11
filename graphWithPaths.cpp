@@ -1,4 +1,3 @@
-
 /*
 This code creates a graph with n nodes and respected edges. 
 Based on the graph two random sequences, p and q, are created 
@@ -27,6 +26,8 @@ class Graph {
     Graph(int Vertex);
     void addEdge(int node_a, int node_b);
     void printAllPaths(int start_node, int end_node);
+    void CreateRandomGraph(int Vertex); //NN
+    void PrintGraph(int Vertex); //NN
 };
 
 
@@ -53,6 +54,38 @@ void Graph::addEdge(int node_a, int node_b)
 {
   adj[node_a].push_back(node_b); 
   adj[node_b].push_back(node_a);
+
+}
+
+void Graph::CreateRandomGraph(int Vertex){
+
+	int node_b = 1;
+	for (int node_a = 0; node_a < Vertex; node_a = node_a + 1){
+        this->addEdge(node_a, node_b);
+
+		node_b = node_b + 1;
+		if (node_b == Vertex){
+			break;
+		}
+        this->addEdge(node_a, node_b);
+
+
+		node_b = node_b + 1;
+		if (node_b == Vertex){
+			break;
+		}
+	}
+
+}
+
+void Graph::PrintGraph(int Vertex) {
+    for (int v = 0; v < Vertex; ++v) { //For hver vertex v ... 
+		cout << "\n Adjacency list of vertex " << v
+			<< "\n head ";
+		for (auto x : adj[v]) //.. vil koden iterere gjennom lista i adj[v]
+			cout << "-> " << x;
+		printf("\n");
+	}
 
 }
 
@@ -135,16 +168,15 @@ int main()
   cin >> nodes;
 
   Graph g(nodes);
-  g.addEdge(0, 1);
-  g.addEdge(0, 2);
-  g.addEdge(0, 3);
-  g.addEdge(2, 1);
-  g.addEdge(1, 3);
+  g.CreateRandomGraph(nodes);
+  g.PrintGraph(nodes);
 
   int start1 =  rand() % nodes; 
   int end1 = rand() % nodes;
   int start2 =  rand() % nodes; 
   int end2 = rand() % nodes;
+
+  
 
   cout << "Following are all different paths from " << start1
     << " to " << end1 << endl;
@@ -153,6 +185,9 @@ int main()
   cout << "Following are all different paths from " << start2
     << " to " << end2 << endl;
   g.printAllPaths(start2, end2);
+
+  
+
 
 
   return 0;
