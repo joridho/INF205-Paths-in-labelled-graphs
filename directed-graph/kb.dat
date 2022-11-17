@@ -1,16 +1,28 @@
-<INF200 2022H> <isInstanceOf> <INF205>
-<INF205 2022H> <isInstanceOf> <INF205>
-<INF205 2023H> <isInstanceOf> <INF205>
-<KJM230 2023V> <isInstanceOf> <KJM230>
+<n0>	<r0>	<n2>
+<n0>	<r1>	<n3>
+<n1>	<r0>	<n2>
+<n1>	<r1>	<n2>
+<n1>	<r0>	<n3>
+<n1>	<r1>	<n3>
 
-<INF200> <isModuleAtFaculty> <REALTEK>
-<INF205> <isModuleAtFaculty> <REALTEK>
-<KJM230> <isModuleAtFaculty> <KBM>
+<n2>	<r2>	<n4>
+<n2>	<r2>	<n5>
+<n3>	<r2>	<n4>
+<n3>	<r3>	<n4>
+<n3>	<r3>	<n5>
 
-<KBM>     <hasStudyAdvisor> <Simon Gustafson Bruerberg>
-<KBM>     <hasStudyAdvisor> <Heidi Rudi>
-<KBM>     <hasStudyAdvisor> <Janne Beate Utåker>
-<REALTEK> <hasStudyAdvisor> <Rune Grønnevik>
-<REALTEK> <hasStudyAdvisor> <Trine Næss Henriksen>
+<n4>	<r4>	<n6>
+<n4>	<r5>	<n7>
+<n5>	<r4>	<n6>
+<n5>	<r5>	<n6>
+<n5>	<r4>	<n7>
+<n5>	<r5>	<n7>
+
+<n6>	<r6>	<n8>
+<n6>	<r6>	<n9>
+<n7>	<r6>	<n8>
+<n7>	<r7>	<n8>
+<n7>	<r6>	<n9>
+
 
 <>

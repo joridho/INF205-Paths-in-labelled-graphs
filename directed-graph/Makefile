@@ -1,4 +1,5 @@
 run: run-graph
+	./graph-benchmark 10 4 kb.dat query.dat
 	./run-graph kb.dat query.dat
 
 run-graph: graph.o query.o run-graph.o 
