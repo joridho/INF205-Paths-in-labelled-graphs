@@ -182,7 +182,7 @@ std::ostream& operator<<(std::ostream& os, const Edge& e) {
    return os;
 }
 
-/*
+/* CHRISTINE
  * erases any existing edges from node labelled source_label to node labelled target_label
  * returns true if such an edge existed, false otherwise
  */

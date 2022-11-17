@@ -18,6 +18,11 @@ namespace graph
 {
    class Edge;  // needs to be declared before we can use it in class Node
    
+   /*
+   Declaration of class Node, which assaigns a string label to the node,
+   and makes two functions that creates incoming and outgoing edges. 
+   These combinations of nodes and edges are unique and can not be changed.
+   */
    class Node
    {
    public:
@@ -40,6 +45,12 @@ namespace graph
       std::set<Edge*> outgoing = std::set<Edge*>();
    };
    
+
+   /*
+   Declaration of class Edge, which decides which nodes that are
+   targets and sources. The class also prints the start and end nodes
+   for different paths in the terminal.
+   */
    class Edge
    {
    public:
@@ -77,6 +88,7 @@ namespace graph
       Node* source = nullptr;  // edge connects *source to *target and vice versa
       Node* target = nullptr;  // if it was a directed graph, we might call them "source" and "target"
    };
+
 
    class Graph
    {
@@ -141,7 +153,7 @@ namespace graph
       
    private:
       // for this implementation, node labels are unique, and we identify nodes through their labels
-      // hence it makes sense to use an STL map with the label as the key and the node as the value
+      // hence it makes sense to use an STL map with the label as the key and the node (pointer) as the value
       std::map<std::string, Node> nodes = std::map<std::string, Node>();
       
       // one possible solution: edges on the heap, owned by the graph object, accessed through a set of pointers

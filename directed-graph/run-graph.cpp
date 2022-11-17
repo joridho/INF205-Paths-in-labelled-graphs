@@ -19,7 +19,7 @@ int main(int argc, char** argv)
    graph::Graph g;
    indata >> g;
    indata.close();
-   // std::cout << "\nContent of graph g:\n" << g << "\n";
+   std::cout << "\nContent of graph g:\n" << g << "\n";
    
    std::ifstream inquery(argv[2]);
    if(!inquery)

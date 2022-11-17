@@ -7,6 +7,9 @@ std::istream& operator>>(std::istream& is, Query& q) {
    return is;
 }
 
+/*
+Returns edges 
+*/
 // read an IRI with bracket notation; return false if \0 or empty token was read
 bool graph::IRI_input(std::string* token, std::istream* source)
 {

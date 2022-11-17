@@ -9,6 +9,11 @@ namespace graph
    // read an IRI with bracket notation; return false if \0 or empty token was read
    bool IRI_input(std::string* token, std::istream* source);
    
+
+   /*
+   Struct that reads files(?), contains a vector of type 'string'.
+   relations might be the place where rel is saved
+   */
    struct Query
    {
       // read from *source
