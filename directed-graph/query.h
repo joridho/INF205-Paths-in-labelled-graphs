@@ -11,9 +11,9 @@ namespace graph
    
 
    /*
-   Struct that reads files(?), contains a vector of type 'string'.
-   relations might be the place where rel is saved
-   */
+    * Struct that reads an input file and adds each element to 
+    * the 'relations' vector until there are no more elements.
+    */
    struct Query
    {
       // read from *source
