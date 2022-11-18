@@ -19,7 +19,7 @@ int main(int argc, char** argv)
    graph::Graph g;
    indata >> g;
    indata.close();
-   std::cout << "\nContent of graph g:\n" << g << "\n";
+   // std::cout << "\nContent of graph g:\n" << g << "\n";
    
    std::ifstream inquery(argv[2]);
    if(!inquery)
@@ -27,9 +27,9 @@ int main(int argc, char** argv)
       std::cerr << "Error! File " << argv[1] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
-   graph::Query q;
-   inquery >> q;
-   inquery.close();
+   graph::Query q; 
+   inquery >> q; 
+   inquery.close(); 
    
    g.query(&q, &std::cout);  // apply query q to graph g
 }

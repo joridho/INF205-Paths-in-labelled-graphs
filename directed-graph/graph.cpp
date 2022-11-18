@@ -64,8 +64,8 @@ Graph::~Graph()
    // debug output
    // std::clog << "\tlog output: calling Graph destructor\n\t\t(this == " << this << ")\n"; 
    
-   // deallocate all the edges
-   for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++) delete *iter;
+   // deallocate all the edges. deletes every edge 
+   for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++) delete *iter; 
 }
       
 // copy constructor:
@@ -76,13 +76,17 @@ Graph::Graph(const Graph& original)
    std::clog << "\tlog output: calling Graph copy constructor\n\t\t(this == "
              << this << ", &original = " << &original << ")\n";  // debug output
     */
-         
+
+   // goes from start of nodes map to the end and creates a new node / a copy for each    
    for(auto iter = original.nodes.begin(); iter != original.nodes.end(); iter++)
       this->create_node(iter->first);
+   
+   // goes through al the edges and creates new edges / copies for each 
    for(auto iter = original.edges.begin(); iter != original.edges.end(); iter++)
    {
       this->create_edge((*iter)->get_source_label(), (*iter)->get_label(), (*iter)->get_target_label());
    }
+   // hopefully the edges and nodes are connected? 
 }
       
 // overloaded copy assignment operator:
@@ -100,7 +104,7 @@ Graph& Graph::operator=(const Graph& right_hand_side)
    this->edges.clear();
    this->nodes.clear();
    
-   // deep copy of right_hand_side content into this
+   // deep copy of right_hand_side content into this. The same thats happening in the method right above 
    for(auto iter = right_hand_side.nodes.begin(); iter != right_hand_side.nodes.end(); iter++)
       this->create_node(iter->first);
    for(auto iter = right_hand_side.edges.begin(); iter != right_hand_side.edges.end(); iter++)
@@ -119,10 +123,12 @@ Graph::Graph(Graph&& old)
    std::clog << "\tlog output: calling Graph move constructor\n\t\t(this == "
              << this << ", &old = " << &old << ")\n";  // debug output
     */
-             
+   // same as the method two methods up 
    for(auto iter = old.nodes.begin(); iter != old.nodes.end(); iter++)
       this->create_node(iter->first);
    this->edges = old.edges;
+
+   // creates new nodes/edges to take over the old place 
    for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++)
    {
       (*iter)->set_nodes(
@@ -131,17 +137,17 @@ Graph::Graph(Graph&& old)
       );
    }
    old.edges.clear();
-}
-
+} 
+/*
 // overloaded move assignment operator:
 // used for an assignment where "this" already exists and "old" is a rhs term to be deallocated
 // compared to the move constructor, we first need to deallocate the pre-existing edges
-Graph& Graph::operator=(Graph&& old)
+Graph& Graph::operator=(Graph&& old)  // (søk) veldig lik den forrige tbh
 {
    /*
    std::clog << "\tlog output: calling Graph move assignment operator\n\t\t(this == "
              << this << ", &old = " << &old << ")\n";  // debug output
-    */
+    *//*
 
    // deallocate all the edges and clear the sets of edges and nodes
    for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++) delete *iter;
@@ -161,7 +167,7 @@ Graph& Graph::operator=(Graph&& old)
    old.edges.clear();
    return *this;
 }
-
+*/
 /*
  * I/O stream operator overloading for Graph
  */
@@ -254,6 +260,7 @@ void Node::detach_edge(Edge* e)
       }
 }
 
+// (søk)
 void Graph::query(Query* q, std::ostream* out)
 {
    std::vector<std::string>::iterator q_rel_it = q->relations.begin();
@@ -268,6 +275,7 @@ void Graph::query(Query* q, std::ostream* out)
    }
 }
 
+// (søk)
 void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it, std::string source_label, std::ostream* out)
 {
    q_rel_it++;
@@ -275,11 +283,11 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
    {
       // solution found!
       *out << "<" << source_label << ">\t<" << this->get_target_label() << ">\n";
-      
+      // Skrive dette ut i en .dat fil?? 
       return;
    }
    
-   auto connections = this->target->get_outgoing_edges();
+   auto connections = this->target->get_outgoing_edges(); 
    for(auto step = connections.begin(); step != connections.end(); step++)
    {
       Edge* e = *step;
