@@ -33,7 +33,7 @@ void Graph::create_edge(
    nb->append_incoming_edge(&(*new_edge));
    
    // update graph object property
-   this->edges.insert(std::move(new_edge));
+   this->edges.insert(std::move(new_edge));  // add new edge with na and nb to the heap that is the graph 
 }
 
 // create a single edge based on information from the stream
@@ -42,7 +42,7 @@ bool Graph::generate_edge_from(std::istream* source)
 {
    // read label of the first node
    std::string source_label = "";
-   if(!IRI_input(&source_label, source)) return false;
+   if(!IRI_input(&source_label, source)) return false;  // Må forstå IRI_input 100% (søk)
    
    // read edge label
    std::string edge_label = "";

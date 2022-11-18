@@ -27,17 +27,21 @@ namespace graph
    {
    public:
       Node() {}  // default constructor
-      Node(std::string in_label) { this->set_label(in_label); }
-      
-      std::string get_label() const { return this->label; }
+
+      // setting labels to the node-instance 
+      Node(std::string in_label) { this->set_label(in_label); } 
+      std::string get_label() const { return this->label; } 
       void set_label(std::string in_label) { this->label = in_label; }
       
+      // get incoming and outgoing edges
       std::set<Edge*> get_incoming_edges() const { return this->incoming; }
       std::set<Edge*> get_outgoing_edges() const { return this->outgoing; }
-      void append_incoming_edge(Edge* e) { this->incoming.insert(e); }
+
+      // The incoming edge is appendes to the incoming set, and the same for outgoing 
+      void append_incoming_edge(Edge* e) { this->incoming.insert(e); }  // using Edge class 
       void append_outgoing_edge(Edge* e) { this->outgoing.insert(e); }
       
-      void detach_edge(Edge* e);  // remove an edge from the incidence list(s)
+      void detach_edge(Edge* e);  // remove an edge from the incidence list(s)  ( the incoming og outgoing set )
       
    private:
       std::string label = "";  // in this implementation, nodes have a string label, taken to be their unique name
@@ -55,20 +59,28 @@ namespace graph
    {
    public:
       Edge() {}  // default constructor
+
+      // creating an Edge instance for the the Edge class. It is immidiatly given start and end nodes, in addition to a label
       Edge(Node* na, std::string in_label, Node* nb) {
          this->set_nodes(na, nb);
          this->set_label(in_label);
       }
 
+      // A label variable is retrieved and then set 
       std::string get_label() const { return this->label; }
       void set_label(std::string in_label) { this->label = in_label; }
       
+      // the source and target label for the edge is retrieved 
       std::string get_source_label() const { return this->source->get_label(); }
       std::string get_target_label() const { return this->target->get_label(); }
+
+      // the source and target for the edge is retrieved, later used in get_source_label() and get_target_label()
       void set_nodes(Node* na, Node* nb) {
          this->source = na;
          this->target = nb;
       }
+
+      // if there is a source or a target it is detached from the edge 
       void detach_from_nodes() {
          if(source) this->source->detach_edge(this);
          if(target) this->target->detach_edge(this);
@@ -80,7 +92,7 @@ namespace graph
                  << "<" << this->label << ">\t<" << this->get_target_label() << ">\n";
       }
       
-      // querying DFS helper method
+      // querying DFS helper method. Takes in query, q_rel_it, source_label and out(what is going to be printed in terminal)
       void conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it, std::string source_label, std::ostream* out);
 
    private:
@@ -90,18 +102,27 @@ namespace graph
    };
 
 
+   // The graph is what hold ownerships of all the nodes and edges 
    class Graph
    {
    public:
       Graph() {}
       
       // return pointer to the node with given label if it exists, nullptr otherwise
+      // Creates an instance of node class using find_node with a given node label. 
+
+      // nodes is a map, the first (key) is the given node label (string) and the second (value) is the pointer
+      // which is found using nodes.find(node_label)
+
+      //The pointer is returned. If it does not have a label a nullptr is returned 
       Node* find_node(std::string node_label) {
          auto iter = this->nodes.find(node_label);
          if(iter == this->nodes.end()) return nullptr;
          else return &(iter->second);
       }
 
+
+      // an edge is created using source, edge and target labels 
       void create_edge(std::string source_label, std::string edge_label, std::string target_label);
       
       // create new node with given label, if non-existing
@@ -117,17 +138,20 @@ namespace graph
       // returns true if such a node existed, false otherwise
       bool erase_node(std::string node_label);
       
-      // read from *source
+      // read from *source. istream is _input_ stream 
       void in(std::istream* source) {
          while(this->generate_edge_from(source)) {}  // read edge by edge, until generate_edge_from returns false
       }
-      // write to *target
+      // write to *target. ostream is _output_ stream 
+      // the for-loop reads everything from the beginning of the edge to the end of the edge and wrrites it out to the target
       void out(std::ostream* target) const {
          for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++)
             (*iter)->out(target);  // output edge by edge
          *target << "<>\n";  // format: empty label for end of content
       }
       
+
+      // Viktig egt ... (søk)
       // destructor:
       // deallocate objects subject to manual memory management that are owned by this object
       ~Graph();
@@ -164,6 +188,7 @@ namespace graph
    };
 }
 
+// Dette må også tolkes (søk)
 /*
  * I/O stream operator overloading for Graph
  */
