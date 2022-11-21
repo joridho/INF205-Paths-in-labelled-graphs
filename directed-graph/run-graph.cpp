@@ -22,11 +22,11 @@
 // apply query q to graph g
 // what happens then??
 //
-// // ./generate-graph <number of nodes> <query path length> <graph file> <query file>
+// // ./generate-graph <number of nodes> <query path length> <graph file> <query file> <result-file>
 int main(int argc, char** argv)
 {
    assert(argc >= 3);
-   
+
    std::ifstream indata(argv[1]);
    if(!indata)
    {
@@ -47,6 +47,8 @@ int main(int argc, char** argv)
    graph::Query q; 
    inquery >> q; 
    inquery.close(); 
+
+   std::ofstream ("results.dat");
    
    g.query(&q, &std::cout);  // apply query q to graph g
 }

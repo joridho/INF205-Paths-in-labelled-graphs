@@ -1,6 +1,7 @@
 /* undirected incidence-list graph implementation */
 
 #include <cassert>
+#include <fstream>
 #include "graph.h"
 
 using namespace graph;
@@ -138,7 +139,7 @@ Graph::Graph(Graph&& old)
    }
    old.edges.clear();
 } 
-/*
+
 // overloaded move assignment operator:
 // used for an assignment where "this" already exists and "old" is a rhs term to be deallocated
 // compared to the move constructor, we first need to deallocate the pre-existing edges
@@ -147,7 +148,7 @@ Graph& Graph::operator=(Graph&& old)  // (søk) veldig lik den forrige tbh
    /*
    std::clog << "\tlog output: calling Graph move assignment operator\n\t\t(this == "
              << this << ", &old = " << &old << ")\n";  // debug output
-    *//*
+    */
 
    // deallocate all the edges and clear the sets of edges and nodes
    for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++) delete *iter;
@@ -167,7 +168,7 @@ Graph& Graph::operator=(Graph&& old)  // (søk) veldig lik den forrige tbh
    old.edges.clear();
    return *this;
 }
-*/
+
 /*
  * I/O stream operator overloading for Graph
  */
@@ -262,7 +263,7 @@ void Node::detach_edge(Edge* e)
 
 // (søk)
 void Graph::query(Query* q, std::ostream* out)
-{
+{   
    std::vector<std::string>::iterator q_rel_it = q->relations.begin();
    for(auto iter = this->edges.begin(); iter != this->edges.end(); iter++)
    {
@@ -283,8 +284,17 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
    {
       // solution found!
       *out << "<" << source_label << ">\t<" << this->get_target_label() << ">\n";
+
+      std::ofstream file;
+      file.open("results.dat", std::ios::out | std::ios::app);
+      if (file.fail())
+         throw std::ios_base::failure(std::strerror(errno));
+      file.exceptions(file.exceptions() | std::ios::failbit | std::ifstream::badbit);
+
+      file << "<" << source_label << ">\t<" << this->get_target_label() << ">\n";
+
       // Skrive dette ut i en .dat fil?? 
-      return;
+      return; 
    }
    
    auto connections = this->target->get_outgoing_edges(); 
