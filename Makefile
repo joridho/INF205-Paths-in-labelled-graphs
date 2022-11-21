@@ -1,4 +1,5 @@
 run: comparing-paths
+	cd directed-graph && make
 	./comparing-paths directed-graph/results.dat
 
 comparing-paths: comparing-paths.o

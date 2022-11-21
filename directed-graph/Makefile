@@ -1,7 +1,7 @@
 g++ -g3 -std=c++17 -o graph-benchmark *.o
 
 run: run-graph
-	./graph-benchmark 100 4 kb.dat query.dat
+	./graph-benchmark 1000 10 kb.dat query.dat
 	./run-graph kb.dat query.dat
 
 run-graph: graph.o query.o run-graph.o

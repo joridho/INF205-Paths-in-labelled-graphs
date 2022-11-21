@@ -21,7 +21,6 @@ int main(int argc, char** argv)
     string line;
     while (indata) {
         getline(indata, line); 
-        //cout << line << "\n";
         similar_paths.push_back(line); 
     }
 
@@ -30,26 +29,26 @@ int main(int argc, char** argv)
 
     for (string i: similar_paths){
         r = r +1;
-
     }
 
     int e;
-    
+
     for (int k = 0; k < r; k++){
 
-        int l =1;
+        int l = 1; 
 
-        for (int h = k; h< r; h++){
+        for (int h = k; h < r; h++){
             if (k == h){
                 continue;
                 }
-            if (similar_paths[k] == similar_paths[h]){
+            if (similar_paths[k] == similar_paths[h] && similar_paths[h] != ""){
                 l +=1;
-                similar_paths[h] = to_string(h);
+                //similar_paths[h] = to_string(h);  
+                similar_paths[h] = ""; // changing the variable so it won't be counted again 
             } 
         }
 
-        if (l>1){
+        if (l > 1){
             cout << similar_paths[k] << " " << "occurs" << " " << l << " " <<  "times" << "\n"; 
         }
     }
