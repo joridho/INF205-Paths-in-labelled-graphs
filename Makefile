@@ -11,3 +11,5 @@ comparing-paths: comparing-paths.o
 clean:
 	@echo "Cleaning up..."
 	rm -f *.o *.zip comparing-paths
+	cd directed-graph && make clean
+	
