@@ -27,6 +27,8 @@ int main(int argc, char** argv)
 {
    assert(argc >= 3);
 
+   std::ofstream ("results.dat");
+
    std::ifstream indata(argv[1]);
    if(!indata)
    {
@@ -47,8 +49,6 @@ int main(int argc, char** argv)
    graph::Query q; 
    inquery >> q; 
    inquery.close(); 
-
-   std::ofstream ("results.dat");
    
    g.query(&q, &std::cout);  // apply query q to graph g
 }
