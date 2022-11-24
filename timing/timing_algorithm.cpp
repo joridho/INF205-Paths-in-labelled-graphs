@@ -2,6 +2,7 @@
 #include <chrono>
 #include <unistd.h>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -13,13 +14,16 @@ int main()
     int q2[4] = {10, 100, 1000, 1000}; 
     
     // Lage en fil 
+    ofstream ("TimeRunGraph.dat");
+    std::ofstream file1;
+    file1.open("TimeRunGraph.dat", std::ios::out | std::ios::app);
 
-    while (q1)
+
+    for (int i : q1)
     {
-        while (g1)
+        file1 << "Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of " << i << endl;
+        for (int j : g1)
         {
-            // lage en overskrift i filen 
-
             // kjøre graph-benchmark 
 
             auto t0 = std::chrono::high_resolution_clock::now();
@@ -27,15 +31,17 @@ int main()
             auto t1 = std::chrono::high_resolution_clock::now();
             double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
             // skrive t til filen 
+            file1 << t << endl;
         }
+        file1 << "\n";
     }
 
-    while (g2)
-    {
-        while (q2)
-        {
-            // lage en overskrift i filen 
 
+    for (int i : g2)
+    {
+        file1 << "Time for graph with " << i << " number of nodes and with a query length of {10, 100, 1000, 1000} " << endl;
+        for (int j : q2)
+        {
             // kjøre graph-benchmark 
 
             auto t0 = std::chrono::high_resolution_clock::now();
@@ -43,8 +49,15 @@ int main()
             auto t1 = std::chrono::high_resolution_clock::now();
             double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
             // skrive t til filen 
+            file1 << t << endl;
         }
+        file1 << "\n";
     }
+
+
+
+
+
 
     // teste comparing paths 
 
@@ -53,27 +66,39 @@ int main()
     // results med 100 paths funnet, men {0, 0.25, 0.50, 0.75, 1} prosent er like 
 
     // ny fil for comparing paths 1
+    ofstream ("TimeComparingGraph1.dat");
+    std::ofstream file2;
+    file2.open("TimeComparingGraph1.dat", std::ios::out | std::ios::app);
     // lage en overskrift i filen 
+    file2 << "Time for comparing-paths with different amounts of paths found" << endl;
     //fil liste_med_results {results10.dat, results100.dat, results1000.dat, results10000.dat}
-    while (q1)
+
+
+    for (int i : q1)
     {
         auto t0 = std::chrono::high_resolution_clock::now();
         // kjøre comparing paths 
         auto t1 = std::chrono::high_resolution_clock::now();
         double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
         // skrive t til filen 
+        file2 << t << endl;
     }
 
     // ny fil for comparing paths 2
+    ofstream ("TimeComparingGraph2.dat");
+    std::ofstream file3;
+    file3.open("TimeComparingGraph2.dat", std::ios::out | std::ios::app);
     // lage en overskrift i filen 
+    file3 << "Time for comparing-paths with 100 paths found but with different amount of similiar paths" << endl;
     //fil liste_med_results {results0.dat, results25.dat, results50.dat, results75.dat, results100.dat}
-    while (q1)
+    for (int i : q1)
     {
         auto t0 = std::chrono::high_resolution_clock::now();
         // kjøre comparing paths 
         auto t1 = std::chrono::high_resolution_clock::now();
         double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
         // skrive t til filen 
+        file3 << t << endl;
     }
 
 
