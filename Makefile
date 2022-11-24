@@ -2,7 +2,7 @@ run: comparing-paths
 	cd directed-graph && make
 	./comparing-paths directed-graph/results.dat
 
-comparing-paths: comparing-paths.o
+comparing-paths: comparing-paths.o 
 	g++ -g3 -std=c++17 -o comparing-paths *.o
 
 %.o: %.cpp

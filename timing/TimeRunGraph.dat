@@ -1,60 +1,60 @@
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 3
-9.4e-08
-6.1e-08
-5.9e-08
-5.8e-08
+1e-07
+8e-08
+7.1e-08
+7e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 4
-7.6e-08
-5.8e-08
-5.8e-08
-5.9e-08
+7.1e-08
+5.7e-08
+6.6e-08
+7.4e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 5
-6.1e-08
-5.8e-08
-6.7e-08
-6.1e-08
+7.1e-08
+6.5e-08
+7.4e-08
+7.3e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 6
+8.1e-08
+7.3e-08
+7.6e-08
 6.9e-08
-5.7e-08
-5.8e-08
-6.6e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 7
-6.4e-08
-5.8e-08
-5.8e-08
-5.8e-08
+7.2e-08
+7.3e-08
+7.2e-08
+7.9e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 8
+7.5e-08
+8e-08
 6e-08
-5.8e-08
-6e-08
-5.8e-08
+7.1e-08
 
 Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of 9
-5.7e-08
-5.8e-08
 5.9e-08
-5.8e-08
+6.4e-08
+5.5e-08
+6.7e-08
 
 Time for graph with 10 number of nodes and with a query length of {10, 100, 1000, 1000} 
+8.8e-08
+8.4e-08
+7.5e-08
 6.9e-08
-5.7e-08
-5.9e-08
-6.1e-08
 
 Time for graph with 100 number of nodes and with a query length of {10, 100, 1000, 1000} 
-5.8e-08
-6e-08
-5.7e-08
-5.8e-08
+6.7e-08
+7.2e-08
+7.8e-08
+7e-08
 
 Time for graph with 1000 number of nodes and with a query length of {10, 100, 1000, 1000} 
+5.7e-08
+7.3e-08
 5.8e-08
-5.9e-08
-5.9e-08
-5.9e-08
+5.8e-08
 

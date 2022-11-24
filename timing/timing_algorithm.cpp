@@ -4,6 +4,9 @@
 #include <vector>
 #include <fstream>
 
+#include "../directed-graph/run-graph.h" 
+#include "../directed-graph/graph-benchmark.h" 
+
 using namespace std;
 
 int main()
@@ -24,10 +27,14 @@ int main()
         file1 << "Time for graph with {10, 100, 1000, 1000} number of nodes and with a query length of " << i << endl;
         for (int j : g1)
         {
-            // kjøre graph-benchmark 
+            char* q = (char*)char(j);
+            char* g = (char*)char(i);
+            int argc = 6;
+            char* argv[6] = {"0", q, g, "kbt.dat", "queryt.dat","0"};
+            //teste::tester(argc, {0, q, g, "kbt.dat", "queryt.dat","0"});
 
             auto t0 = std::chrono::high_resolution_clock::now();
-            // kjøre run-graph 
+            //run::run_graph(argc, argv);
             auto t1 = std::chrono::high_resolution_clock::now();
             double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
             // skrive t til filen 

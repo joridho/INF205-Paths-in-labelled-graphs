@@ -31,6 +31,7 @@ using namespace run;
 int run::run_graph(int argc, char** argv)
 {
    assert(argc >= 6);
+   
    if (atoi(argv[5]) == 1)
    {
       teste::tester(argc, argv);
