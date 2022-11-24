@@ -1,9 +1,7 @@
-g++ -g3 -std=c++17 -o graph-benchmark *.o
-
 run: run-graph
-	./run-graph kb.dat query.dat
+	./run-graph 1000 10 kb.dat query.dat 1
 
-run-graph: graph.o query.o run-graph.o
+run-graph: graph.o query.o run-graph.o graph-benchmark.o 
 	g++ -g3 -std=c++17 -o run-graph *.o
 
 %.o: %.cpp
@@ -12,4 +10,4 @@ run-graph: graph.o query.o run-graph.o
 clean:
 	@echo "Cleaning up..."
 	rm -f *.o *.zip run-graph
-	rm -f *.o *.zip comparing-paths
+

@@ -5,6 +5,10 @@
 
 #include "graph.h"
 #include "query.h"
+#include "graph-benchmark.h"
+#include "run-graph.h"
+
+using namespace run;
 
 // The main function:
 // The program terminates if the arguments are less than 3???
@@ -23,16 +27,21 @@
 // what happens then??
 //
 // // ./generate-graph <number of nodes> <query path length> <graph file> <query file> <result-file>
-int main(int argc, char** argv)
+
+int run::run_graph(int argc, char** argv)
 {
-   assert(argc >= 3);
+   assert(argc >= 6);
+   if (atoi(argv[5]) == 1)
+   {
+      teste::tester(argc, argv);
+   }
 
    std::ofstream ("results.dat");
 
-   std::ifstream indata(argv[1]);
+   std::ifstream indata(argv[3]);
    if(!indata)
    {
-      std::cerr << "Error! File " << argv[1] << " cannot be read.\n";
+      std::cerr << "Error! File " << argv[3] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
    graph::Graph g;
@@ -40,10 +49,10 @@ int main(int argc, char** argv)
    indata.close();
    // std::cout << "\nContent of graph g:\n" << g << "\n";
    
-   std::ifstream inquery(argv[2]);
+   std::ifstream inquery(argv[4]);
    if(!inquery)
    {
-      std::cerr << "Error! File " << argv[1] << " cannot be read.\n";
+      std::cerr << "Error! File " << argv[3] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
    graph::Query q; 
@@ -51,4 +60,10 @@ int main(int argc, char** argv)
    inquery.close(); 
    
    g.query(&q, &std::cout);  // apply query q to graph g
+}
+
+
+int main(int argc, char** argv)
+{
+   run::run_graph(argc, argv);
 }
