@@ -2,6 +2,10 @@
 
 #include <cassert>
 #include <fstream>
+#include <iostream>
+#include <chrono>
+#include <unistd.h>
+#include <vector>
 #include "graph.h"
 
 using namespace graph;
@@ -288,11 +292,22 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
       file.open("results.dat", std::ios::out | std::ios::app);
       if (file.fail())
          throw std::ios_base::failure(std::strerror(errno));
-      file.exceptions(file.exceptions() | std::ios::failbit | std::ifstream::badbit);
+      file.exceptions(file.exceptions() | std::ios::failbit | std::ifstream::badbit); 
 
-      file << "<" << source_label << ">\t<" << this->get_target_label() << ">\n";
+      int a = 0;
+      std::string line;
 
-      // Skrive dette ut i en .dat fil?? 
+      auto size = std::filesystem::file_size("results.dat");
+
+      if (size % 2 == 0)
+      { 
+         file << "p <" << source_label << ">\t<" << this->get_target_label() << ">\n";
+      }
+      else 
+      {
+         file << "q <" << source_label << ">\t<" << this->get_target_label() << ">\n";
+      }
+      
       return; 
    }
    
