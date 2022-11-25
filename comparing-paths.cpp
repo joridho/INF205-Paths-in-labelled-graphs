@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <cassert>
+#include <string.h>
 
 using namespace std;
 
@@ -9,47 +10,61 @@ int main(int argc, char** argv)
 {
     assert(argc >= 2);
 
-    std::ifstream indata(argv[1]);
+    std::ifstream ind(argv[1]);
 
-    if(!indata)
+    if(!ind)
     {
         std::cerr << "Error! File " << argv[1] << " cannot be read.\n";
         return EXIT_FAILURE;
     }
     
-    std::vector<std::string> similar_paths;
-    string line;
-    while (indata) {
-        getline(indata, line); 
-        similar_paths.push_back(line); 
+    string l; 
+    int t = 0;
+    std::vector<std::string> length;
+    while (ind) {
+        getline(ind, l); 
+        length.push_back(l);
+        t = t + 1;
     }
 
-    std::vector<std::string> like_nodes;
-    int r = 0;
 
-    for (string i: similar_paths){
+    std::ifstream indata(argv[1]);
+    if(!indata)
+    {
+        std::cerr << "Error! File " << argv[1] << " cannot be read.\n";
+        return EXIT_FAILURE;
+    }
+
+    std::vector<std::string> q_paths;
+    std::vector<std::string> p_paths;
+    string line; 
+
+    for (int m = 0; m < t-1; m++) {
+        getline(indata, line); 
+
+        string s1{line};
+        char b = line[0]; 
+        string path = s1.substr(2); 
+        
+        if (b == 'p') {p_paths.push_back(path);}
+        else if (b == 'q') {q_paths.push_back(path);}
+
+    }
+
+    int r = 0; 
+    for (string i : p_paths){
         r = r +1;
     }
 
-    int e;
-
-    for (int k = 0; k < r; k++){
-
-        int l = 1; 
-
-        for (int h = k; h < r; h++){
-            if (k == h){
-                continue;
-                }
-            if (similar_paths[k] == similar_paths[h] && similar_paths[h] != ""){
-                l +=1;
-                //similar_paths[h] = to_string(h);  
-                similar_paths[h] = ""; // changing the variable so it won't be counted again 
-            } 
-        }
-
-        if (l > 1){
-            cout << similar_paths[k] << " " << "occurs" << " " << l << " " <<  "times" << "\n"; 
+    for (string i : q_paths)
+    {
+        for (int h = 0; h < r; h++)
+        {
+            if (i == p_paths[h] && p_paths[h] != "")
+            {
+                cout << "Path " << i << " occurs in both q and p" << endl;
+                p_paths[h] = "";
+            }
         }
     }
 }
