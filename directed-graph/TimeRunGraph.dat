@@ -1,0 +1,67 @@
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 3
+0.000460448
+0.00218468
+0.0162444
+0.125103
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 4
+0.000828389
+0.00166501
+0.0188319
+0.141364
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 5
+0.00052479
+0.00406293
+0.0177145
+0.150455
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 6
+0.000481859
+0.00686641
+0.0146241
+0.158409
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 7
+0.0010893
+0.00226355
+0.0156249
+0.168684
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 8
+0.000382015
+0.00172499
+0.0196323
+0.168861
+
+Time for graph with {10, 100, 1000, 10000} number of nodes and with a query length of 9
+0.000326675
+0.00623474
+0.0166003
+0.187434
+
+Time for graph with 10 number of nodes and with a query length of {10, 100, 1000, 10000, 100000}; 
+0.000211859
+
+Time for graph with 100 number of nodes and with a query length of {10, 100, 1000, 10000, 100000}; 
+0.000211921
+0.000741413
+
+Time for graph with 1000 number of nodes and with a query length of {10, 100, 1000, 10000, 100000}; 
+0.000814226
+0.00123212
+0.00926567
+
+Time for graph with 10000 number of nodes and with a query length of {10, 100, 1000, 10000, 100000}; 
+0.00487743
+0.00492722
+0.0139425
+0.12965
+
+Time for graph with 100000 number of nodes and with a query length of {10, 100, 1000, 10000, 100000}; 
+0.042017
+0.0349456
+0.0424144
+0.143887
+1.50535
+

@@ -2,11 +2,10 @@
 #define GRAPHB_H
 #include <iostream>
 
-namespace teste
+namespace bench
 {
-    int tester(int argc, char** argv);
+    int graph_benchmark(int argc, char** argv);
 
 }
-
 
 #endif

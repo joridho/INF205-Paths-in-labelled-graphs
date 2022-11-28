@@ -13,11 +13,11 @@
 
 #include "graph-benchmark.h"
 
-using namespace teste;
+using namespace bench;
 
-int teste::tester(int argc, char** argv)
+int bench::graph_benchmark(int argc, char** argv)
 {
-    assert(argc == 6);  // ./generate-graph <number of nodes> <query path length> <graph file> <query file>
+    assert(argc >= 6);  // ./generate-graph <number of nodes> <query path length> <graph file> <query file>
     
     long graph_size = std::atol(argv[1]);
     assert(graph_size > 0);
@@ -107,7 +107,6 @@ int teste::tester(int argc, char** argv)
     
     gout << "\n<>\n";
     gout.close();
-    std::cout << "Done.\n";
     return 0;
 }
 

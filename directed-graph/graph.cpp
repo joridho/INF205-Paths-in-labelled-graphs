@@ -287,7 +287,8 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
    if(q_rel_it == q->relations.end())
    {
       // solution found!
-
+      // comment out from here when taking the time
+      
       std::ofstream file;
       file.open("results.dat", std::ios::out | std::ios::app);
       if (file.fail())
@@ -301,12 +302,13 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
 
       if (size % 2 == 0)
       { 
-         file << "p <" << source_label << ">\t<" << this->get_target_label() << ">\n";
+         file << "p <" << source_label << ">\t<" << this->get_target_label() << ">\n";  
       }
       else 
       {
          file << "q <" << source_label << ">\t<" << this->get_target_label() << ">\n";
       }
+      
       
       return; 
    }

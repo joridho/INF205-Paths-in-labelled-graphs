@@ -34,12 +34,12 @@ int run::run_graph(int argc, char** argv)
    
    if (atoi(argv[5]) == 1)
    {
-      teste::tester(argc, argv);
+      bench::graph_benchmark(argc, argv);
    }
 
    std::ofstream ("results.dat");
 
-   std::ifstream indata(argv[3]);
+   std::ifstream indata(argv[3]); 
    if(!indata)
    {
       std::cerr << "Error! File " << argv[3] << " cannot be read.\n";
@@ -50,10 +50,10 @@ int run::run_graph(int argc, char** argv)
    indata.close();
    // std::cout << "\nContent of graph g:\n" << g << "\n";
    
-   std::ifstream inquery(argv[4]);
+   std::ifstream inquery(argv[4]); 
    if(!inquery)
    {
-      std::cerr << "Error! File " << argv[3] << " cannot be read.\n";
+      std::cerr << "Error! File " << argv[4] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
    graph::Query q; 
@@ -61,9 +61,10 @@ int run::run_graph(int argc, char** argv)
    inquery.close(); 
    
    g.query(&q, &std::cout);  // apply query q to graph g
+   return 0;
 }
 
-
+// comment out when taking the time 
 int main(int argc, char** argv)
 {
    run::run_graph(argc, argv);
