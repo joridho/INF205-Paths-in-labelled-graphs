@@ -43,11 +43,13 @@ int bench::graph_benchmark(int argc, char** argv)
     double l = std::pow(1.4427*p, -1.0/(2.0*query_size));
     
     // random seed from chrono
+
     std::srand(
         std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::high_resolution_clock::now().time_since_epoch()
         ).count()
     );
+
 
     // generate graph file
     std::ofstream gout(argv[3]);

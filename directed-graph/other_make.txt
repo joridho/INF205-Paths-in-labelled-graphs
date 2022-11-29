@@ -14,7 +14,7 @@ clean:
 	@echo "Cleaning up..."
 	rm -f *.o *.zip time-run-graph
 
-
+comment out main in run-graph.cpp, some lines inn graph.cpp 
 
 
 run: run-graph

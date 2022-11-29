@@ -11,4 +11,3 @@ clean:
 	@echo "Cleaning up..."
 	rm -f *.o *.zip comparing-paths
 	cd directed-graph && make clean
-	

@@ -309,6 +309,8 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
          file << "q <" << source_label << ">\t<" << this->get_target_label() << ">\n";
       }
       
+      // to here
+      
       
       return; 
    }

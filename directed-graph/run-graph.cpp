@@ -65,6 +65,7 @@ int run::run_graph(int argc, char** argv)
 }
 
 // comment out when taking the time 
+
 int main(int argc, char** argv)
 {
    run::run_graph(argc, argv);

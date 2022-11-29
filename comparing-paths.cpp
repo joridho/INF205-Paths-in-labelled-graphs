@@ -61,20 +61,34 @@ int comp::compare_paths(int argc, char** argv)
         q_num = q_num +1;
     }
 
+
     for (int p = 0; p < p_num; p++)
     {
-        int l = 0;
+        int lq = 0;
+        std::string equal_path;
         for (int q = 0; q < q_num; q++)
         {
-            if (q_paths[q] == p_paths[p] && q_paths[q] != "")
+            if (q_paths[q] == p_paths[p] && q_paths[q] != "" && p_paths[p] != "")
             {
-                l = l + 1;
-                //p_paths[p] = "";
+                lq = lq + 1;
+                equal_path = q_paths[q];
                 q_paths[q] = "";
             }
         }
-        if (l > 0) {
-            std::cout << "Path " << p_paths[p] << " occurs " << l << " times in both q and p" << std::endl;
+
+        int lp = 0;
+        if (lq > 1)
+        {
+            for (int z = 0; z < p_num; z++)
+            {
+                if (p_paths[z] == equal_path)
+                {
+                    p_paths[z] = "";
+                    lp = lp + 1;
+                }
+            }
+
+            std::cout << equal_path << "     occurs " << lq << " times in q and " <<  lp << " times in p" << std::endl;
         }
     }
     return 0;

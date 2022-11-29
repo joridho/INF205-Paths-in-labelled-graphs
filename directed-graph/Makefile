@@ -1,5 +1,4 @@
 run: run-graph
-	@echo "Remember to comment in the 'out's and the 'main's"
 	./run-graph 1000 10 kb.dat query.dat 1
 
 run-graph: graph.o query.o run-graph.o graph-benchmark.o
@@ -11,5 +10,3 @@ run-graph: graph.o query.o run-graph.o graph-benchmark.o
 clean:
 	@echo "Cleaning up..."
 	rm -f *.o *.zip run-graph
-
-	
