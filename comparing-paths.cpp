@@ -94,9 +94,5 @@ int comp::compare_paths(int argc, char** argv)
     return 0;
 }
 
-// comment out when testing the runtime 
-int main(int argc, char** argv)
-{
-   comp::compare_paths(argc, argv);
-}
+
 

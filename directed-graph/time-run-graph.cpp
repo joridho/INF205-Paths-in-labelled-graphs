@@ -18,9 +18,9 @@ int main()
     int q2[5] = {10, 100, 1000, 10000, 100000}; 
     
     // creating file to store the time it takes to run run-graph
-    ofstream ("TimeRunGraph.dat");
+    ofstream ("../results/TimeRunGraph.dat");
     std::ofstream file1;
-    file1.open("TimeRunGraph.dat", std::ios::out | std::ios::app);
+    file1.open("../results/TimeRunGraph.dat", std::ios::out | std::ios::app);
 
 
     for (int i : q1)

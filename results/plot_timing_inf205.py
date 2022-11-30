@@ -10,9 +10,9 @@ Created on Thu Nov 24 09:32:58 2022
 import matplotlib.pyplot as plt
 import numpy as np
 
-file1 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/directed-graph/TimeRunGraph.dat"
-file2 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/TimeComparingGraph1.dat"
-file3 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/TimeComparingGraph2.dat"
+file1 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/results/TimeRunGraph.dat"
+file2 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/results/TimeComparingGraph1.dat"
+file3 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/results/TimeComparingGraph2.dat"
 
 
 data1 = list(open(file1))
@@ -137,7 +137,7 @@ fig.savefig("plot_run-graph2.pdf", bbox_inches='tight')
 plt.figure()
 plots = np.array(plot3[1:])
 plt.grid()
-x_axis = ['10', '100', '1000', '10000']
+x_axis = ['16', '32', '64', '128', '256', '512', '1024']
 plt.plot(x_axis, np.log(plots), linestyle = '--', linewidth=1, marker='o')
 
 plt.ylabel('Run-time in log scale [seconds]')
