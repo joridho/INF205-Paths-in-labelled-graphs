@@ -17,8 +17,10 @@ The run-time has been tested on [run-graph.cpp](https://github.com/joridho/INF20
 
 The run-time for run-graph.cpp is tested in [time-run-graph.cpp](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/directed-graph/time-run-graph.cpp) in [src/directed-graph](https://github.com/joridho/INF205-Paths-in-labelled-graphs/tree/main/src/directed-graph). The time is written to [TimeRunGraph.dat](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/TimeRunGraph.dat) in [src/results](https://github.com/joridho/INF205-Paths-in-labelled-graphs/tree/main/src/results). 
 
-The run-time for [comparing-paths.cpp](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/comparing-paths.cpp) is tested in [time-comparing-paths.cpp](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/time-comparing-paths.cpp) in [src](https://github.com/joridho/INF205-Paths-in-labelled-graphs/tree/main/src). The time is written to [TimeComparingPaths1.dat](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/TimeComparingGraph1.dat) and [TimeComparingPaths2.dat](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/TimeComparingGraph2.dat) in [src/results](https://github.com/joridho/INF205-Paths-in-labelled-graphs/tree/main/src/results). 
+The run-time for [comparing-paths.cpp](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/comparing-paths.cpp) is tested in [time-comparing-paths.cpp](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/time-comparing-paths.cpp) in [src](https://github.com/joridho/INF205-Paths-in-labelled-graphs/tree/main/src). The time is written to [TimeComparingPaths1.dat](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/TimeComparingGraph1.dat) and [TimeComparingPaths2.dat](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/TimeComparingGraph2.dat) in [src/results](src/results/). 
 
 
-### Plot time 
-The results of benchmarking the run-time is read by [plot_timing_inf205.py](https://github.com/joridho/INF205-Paths-in-labelled-graphs/blob/main/src/results/plot_timing_inf205.py). The mean of the time is calculated and then plotted. 
+### Plot run-time 
+The results of benchmarking the run-time is read by [plot_timing_inf205.py](src/results/plot_timing_inf205.py). The mean of the time is calculated and then plotted. 
+
+
