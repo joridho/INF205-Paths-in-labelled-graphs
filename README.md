@@ -23,7 +23,7 @@ The run-time for [comparing-paths.cpp](src/comparing-paths.cpp) is tested in [ti
 ### Plot run-time 
 The results of benchmarking the run-time is read by [plot_timing_inf205.py](src/results/plot_timing_inf205.py). The mean of the time is calculated and then plotted. 
 
-![Plot 1](src/results/plot_run-graph1.pdf)
+![Plot 1](src/results/plot_run-graph1.png)
 ![Plot 2](src/results/plot_run-graph2.pdf)
 ![Plot 3](src/results/plot_compare-paths1.pdf)
 ![Plot 4](src/results/plot_compare-paths2.pdf)
