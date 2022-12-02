@@ -1,3 +1,8 @@
+// Created by Martin Thomas Horsch, associate professor at intitute for data science, 
+// faculty of science and technology, NMBU
+// written with the following license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+// Some comments were added to the whole code, but nothing else were altered. 
 
 #ifndef GRAPH_H
 #define GRAPH_H

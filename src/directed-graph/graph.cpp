@@ -1,3 +1,10 @@
+// Created by Martin Thomas Horsch, associate professor at intitute for data science, 
+// faculty of science and technology, NMBU
+// written with the following license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+// Some changes were made to conditional_dfs at line 297-315. 
+// Also some comments were added to the whole code, but nothing else were altered. 
+
 /* undirected incidence-list graph implementation */
 
 #include <cassert>
@@ -287,8 +294,6 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
    if(q_rel_it == q->relations.end())
    {
       // solution found!
-      // comment out from here when taking the time
-      
       std::ofstream file;
       file.open("results.dat", std::ios::out | std::ios::app);
       if (file.fail())
@@ -308,9 +313,6 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
       {
          file << "q <" << source_label << ">\t<" << this->get_target_label() << ">\n";
       }
-      
-      // to here
-      
       
       return; 
    }

@@ -1,3 +1,13 @@
+// Created by Martin Thomas Horsch, associate professor at intitute for data science, 
+// faculty of science and technology, NMBU
+// written with the following license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+// These changes were made:
+//    - Use of graph-benchmark 
+//    - Add the results to results.dat 
+//    - Altered the code to fit to the header file created
+// Some comments were added to the whole code, but nothing else were altered. 
+
 #include <cassert>
 #include <fstream>
 #include <iostream>
@@ -48,7 +58,6 @@ int run::run_graph(int argc, char** argv)
    graph::Graph g;
    indata >> g;
    indata.close();
-   // std::cout << "\nContent of graph g:\n" << g << "\n";
    
    std::ifstream inquery(argv[4]); 
    if(!inquery)
@@ -63,8 +72,6 @@ int run::run_graph(int argc, char** argv)
    g.query(&q, &std::cout);  // apply query q to graph g
    return 0;
 }
-
-// comment out when taking the time 
 
 int main(int argc, char** argv)
 {
