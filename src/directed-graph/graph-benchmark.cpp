@@ -4,6 +4,7 @@
 
 // The changes made were creating a header file and changing this code to fit the header file
 
+
 // executable should be called as follows:
 //
 // ./generate-graph <number of nodes> <query path length> <graph file> <query file>

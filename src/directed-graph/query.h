@@ -17,7 +17,7 @@ namespace graph
    
 
    /*
-    * Struct that reads an input file and adds each element to 
+    * The struct reads an input file and adds each element to 
     * the 'relations' vector until there are no more elements.
     */
    struct Query

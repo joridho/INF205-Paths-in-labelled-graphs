@@ -25,9 +25,9 @@ namespace graph
    class Edge;  // needs to be declared before we can use it in class Node
    
    /*
-   Declaration of class Node, which assaigns a string label to the node,
-   and makes two functions that creates incoming and outgoing edges. 
-   These combinations of nodes and edges are unique and can not be changed.
+   * Declaration of class Node which assaigns a string label to the node,
+   * and makes two functions that creates incoming and outgoing edges. 
+   * These combinations of nodes and edges are unique and can not be changed.
    */
    class Node
    {
@@ -43,23 +43,23 @@ namespace graph
       std::set<Edge*> get_incoming_edges() const { return this->incoming; }
       std::set<Edge*> get_outgoing_edges() const { return this->outgoing; }
 
-      // The incoming edge is appendes to the incoming set, and the same for outgoing 
+      // The incoming edge is appended to the incoming set, and the same for outgoing 
       void append_incoming_edge(Edge* e) { this->incoming.insert(e); }  // using Edge class 
       void append_outgoing_edge(Edge* e) { this->outgoing.insert(e); }
       
       void detach_edge(Edge* e);  // remove an edge from the incidence list(s)  ( the incoming og outgoing set )
       
    private:
-      std::string label = "";  // in this implementation, nodes have a string label, taken to be their unique name
+      std::string label = "";  // in this implementation, nodes have a string label taken to be their unique name
       std::set<Edge*> incoming = std::set<Edge*>();
       std::set<Edge*> outgoing = std::set<Edge*>();
    };
    
 
    /*
-   Declaration of class Edge, which decides which nodes that are
-   targets and sources. The class also prints the start and end nodes
-   for different paths in the terminal.
+   * Declaration of class Edge, which decides which nodes that are
+   * targets and sources. The class also prints the start and end nodes
+   * for different paths in the terminal.
    */
    class Edge
    {

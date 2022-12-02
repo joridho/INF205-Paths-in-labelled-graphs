@@ -20,22 +20,12 @@
 
 using namespace run;
 
-// The main function:
-// The program terminates if the arguments are less than 3???
-// The program opens up the file as indata that the user puts as arguments**
-// If the user has not put a file, the program terminates and prints out an error message
-// Makes a object g of the Graph class
-// Stores graph in indata in g
-//closes file indata
-//
-// The program opens up the file as inquery that the user puts as arguments**
-// If the user has not put a file, the program terminates and prints out an error message
-// Makes a object q of the Query class
-// Stores query in inquery in q 
-// closes file inquery
-// apply query q to graph g
-// what happens then??
-//
+/*
+* Run graph creates an object g of the Graph class and stores the graph g in indata.
+* Then an object q of the Query class is stored in inquery in q. 
+* Indata and inquery is files defined in the input
+*/
+
 // // ./generate-graph <number of nodes> <query path length> <graph file> <query file> <result-file>
 
 int run::run_graph(int argc, char** argv)
@@ -47,7 +37,7 @@ int run::run_graph(int argc, char** argv)
       bench::graph_benchmark(argc, argv);
    }
 
-   std::ofstream ("results.dat");
+   std::ofstream ("results.dat");  // initializing of file where the results will be written to 
 
    std::ifstream indata(argv[3]); 
    if(!indata)
@@ -55,7 +45,7 @@ int run::run_graph(int argc, char** argv)
       std::cerr << "Error! File " << argv[3] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
-   graph::Graph g;
+   graph::Graph g;  // object g of Graph class 
    indata >> g;
    indata.close();
    
@@ -65,13 +55,14 @@ int run::run_graph(int argc, char** argv)
       std::cerr << "Error! File " << argv[4] << " cannot be read.\n";
       return EXIT_FAILURE;
    }
-   graph::Query q; 
+   graph::Query q; // object q of Query class 
    inquery >> q; 
    inquery.close(); 
    
    g.query(&q, &std::cout);  // apply query q to graph g
    return 0;
 }
+
 
 int main(int argc, char** argv)
 {

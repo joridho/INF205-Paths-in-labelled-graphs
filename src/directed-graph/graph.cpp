@@ -98,7 +98,6 @@ Graph::Graph(const Graph& original)
    {
       this->create_edge((*iter)->get_source_label(), (*iter)->get_label(), (*iter)->get_target_label());
    }
-   // hopefully the edges and nodes are connected? 
 }
       
 // overloaded copy assignment operator:
@@ -116,7 +115,6 @@ Graph& Graph::operator=(const Graph& right_hand_side)
    this->edges.clear();
    this->nodes.clear();
    
-   // deep copy of right_hand_side content into this. The same thats happening in the method right above 
    for(auto iter = right_hand_side.nodes.begin(); iter != right_hand_side.nodes.end(); iter++)
       this->create_node(iter->first);
    for(auto iter = right_hand_side.edges.begin(); iter != right_hand_side.edges.end(); iter++)
@@ -135,7 +133,6 @@ Graph::Graph(Graph&& old)
    std::clog << "\tlog output: calling Graph move constructor\n\t\t(this == "
              << this << ", &old = " << &old << ")\n";  // debug output
     */
-   // same as the method two methods up 
    for(auto iter = old.nodes.begin(); iter != old.nodes.end(); iter++)
       this->create_node(iter->first);
    this->edges = old.edges;
@@ -154,7 +151,7 @@ Graph::Graph(Graph&& old)
 // overloaded move assignment operator:
 // used for an assignment where "this" already exists and "old" is a rhs term to be deallocated
 // compared to the move constructor, we first need to deallocate the pre-existing edges
-Graph& Graph::operator=(Graph&& old)  // (søk) veldig lik den forrige tbh
+Graph& Graph::operator=(Graph&& old) 
 {
    /*
    std::clog << "\tlog output: calling Graph move assignment operator\n\t\t(this == "
@@ -272,7 +269,7 @@ void Node::detach_edge(Edge* e)
       }
 }
 
-// (søk)
+// the method called in run-graph.cpp
 void Graph::query(Query* q, std::ostream* out)
 {   
    std::vector<std::string>::iterator q_rel_it = q->relations.begin();
@@ -287,7 +284,7 @@ void Graph::query(Query* q, std::ostream* out)
    }
 }
 
-// (søk)
+// recursive function that writes the results to results.dat 
 void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it, std::string source_label, std::ostream* out)
 {
    q_rel_it++;

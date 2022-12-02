@@ -15,6 +15,7 @@ using namespace std;
 * Second it will be tested with different amount of similar paths found. this is done 5000 times. 
 * The results are written to TimeComparingGraph1.dat
 */
+
 int main ()
 {
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of paths found

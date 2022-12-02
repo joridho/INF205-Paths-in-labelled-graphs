@@ -1,5 +1,5 @@
 run: run-graph
-	@clear
+	@clear 
 	./run-graph 1000 10 kb.dat query.dat 1
 
 run-graph: graph.o query.o run-graph.o graph-benchmark.o

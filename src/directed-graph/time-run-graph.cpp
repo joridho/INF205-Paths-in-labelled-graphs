@@ -11,7 +11,9 @@
 using namespace std;
 
 int main()
-{
+{   
+    // g1 and g2 is the number of nodes in the graph being run in the benchmark
+    // q1 and q2 is the length of the query being run in the benchmark
     int g1[4] = {10, 100, 1000, 10000}; 
     int g2[5] = {10, 100, 1000, 10000, 100000}; 
     int q1[7] = {3, 4, 5, 6, 7, 8, 9}; 
@@ -62,7 +64,7 @@ int main()
                 auto t1 = std::chrono::high_resolution_clock::now();
                 double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
 
-                file1 << t << "\t";// The time is written to the file 
+                file1 << t << "\t"; // The time is written to the file 
             }
             file1 << "\n";
         }
@@ -113,7 +115,7 @@ int main()
                 double t = std::chrono::duration_cast<std::chrono::nanoseconds>(t1-t0).count() * 0.000000001;
                 
 
-                file1 << t << "\t";// The time is written to the file 
+                file1 << t << "\t"; // The time is written to the file 
             }
             file1 << "\n";
         }
