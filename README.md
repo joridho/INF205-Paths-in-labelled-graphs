@@ -1,5 +1,5 @@
 # INF205 Paths in labelled graphs
-## Programming project in INF205 Resource-efficient programming at NMBU
+#### Programming project in INF205 Resource-efficient programming at NMBU
 
 The point of the project is to take in a labelled graph *g* and two sequences *p* and *q* of edge labels and check if there exist a path *p* and a path *q* that contains the same start node and end node. 
 
@@ -23,8 +23,8 @@ The run-time for [comparing-paths.cpp](src/comparing-paths.cpp) is tested in [ti
 ### Plot run-time 
 The results of benchmarking the run-time is read by [plot_timing_inf205.py](src/results/plot_timing_inf205.py). The mean of the time is calculated and then plotted. 
 
-![Plot 1](src/results/plot_run-graph1.png)
-![Plot 2](src/results/plot_run-graph2.pdf)
-![Plot 3](src/results/plot_compare-paths1.pdf)
-![Plot 4](src/results/plot_compare-paths2.pdf)
+![](src/results/plot_run-graph1.png)
+![](src/results/plot_run-graph1.png)
+![](src/results/plot_compare-paths1.png)
+![](src/results/plot_compare-paths2.png)
 
