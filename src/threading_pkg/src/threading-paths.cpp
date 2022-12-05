@@ -15,13 +15,16 @@
 */
 using namespace comp;
 
-/*
  
 /*
-* This function works almost the same as the compare_paths function in comparing-pths.cpp, but we have included threading with message passing. This function reads a file containing a start node and a end node for a path q or path p.
-* The paths will be divided into a vector for path p and a vector for path q. Then the code implements the compare function, which checks if there is a path p that has the same start node and end node as a path q, 
-* and will count the number of instances. The compare function will display the results on screen and use message-passing concurrency with ROS if wanted. The ROS code sends messages from a publisher node. 
-*/
+ * This function works almost the same as the compare_paths function in comparing-pths.cpp, but we 
+ * have included threading with message passing. This function reads a file containing a start node 
+ * and a end node for a path q or path p. The paths will be divided into a vector for path p and a 
+ * vector for path q. Then the code implements the compare function, which checks if there is a path 
+ * p that has the same start node and end node as a path q, and will count the number of instances. 
+ * The compare function will display the results on screen and use message-passing concurrency with 
+ * ROS if wanted. The ROS code sends messages from a publisher node. 
+ */
 
 
 int comp::compare_paths(int argc, char** argv)
@@ -38,7 +41,7 @@ int comp::compare_paths(int argc, char** argv)
         return EXIT_FAILURE;
     }
     
-    // counts the amounts of paths found in the file 
+    // Counts the amounts of paths found in the file 
     std::string l; 
     int t = 0;
     std::vector<std::string> length;
@@ -48,7 +51,7 @@ int comp::compare_paths(int argc, char** argv)
         t = t + 1;
     }
 
-    // reads the file again
+    // Reads the file again
     std::ifstream indata(argv[1]); 
     if(!indata)
     {
@@ -59,7 +62,7 @@ int comp::compare_paths(int argc, char** argv)
     std::vector<std::string> p_paths;
     std::string line; 
 
-    // divides the results into path p and path q
+    // Divides the results into path p and path q
     for (int m = 0; m < t-1; m++) {
         getline(indata, line); 
         std::string s1{line};
@@ -72,7 +75,7 @@ int comp::compare_paths(int argc, char** argv)
             q_paths.push_back(path);}
     }
 
-    // counts instances of path p and path q
+    // Counts instances of path p and path q
     int p_num = 0; 
     for (std::string i : p_paths){
         p_num = p_num +1;
@@ -82,20 +85,19 @@ int comp::compare_paths(int argc, char** argv)
         q_num = q_num +1;
     }
     
-    //Divide the vectors p_path and q_path into two parts for threading
+    // Divide the vectors p_path and q_path into two parts for threading
     std::vector<std::string> p_path1(p_paths.begin(), p_paths.begin() + p_paths.size()/2);
     std::vector<std::string> p_path2(p_paths.begin() + p_paths.size()/2, p_paths.end());
 
     std::vector<std::string> q_path1(q_paths.begin(), q_paths.begin() + q_paths.size()/2);
     std::vector<std::string> q_path2(q_paths.begin() + q_paths.size()/2, q_paths.end());
 
-
     int p1 = p_path1.size();
     int p2 = p_path2.size();
     int q1 = q_path1.size();
     int q2 = q_path2.size();
 
-    //start threading, where each thread uses the compare function
+    // Start threading, where each thread uses the compare function
     std::thread t1(&compare, argc, argv, 0, p1, p_path1, q_path1, q1);
     std::thread t2(&compare, argc, argv, 0, p2, p_path2, q_path2, q2);
     t1.join();
@@ -105,8 +107,8 @@ int comp::compare_paths(int argc, char** argv)
     return 0;
 }
 
-int comp::compare(int argc, char** argv, int start_index, int end_index, std::vector<std::string> p_paths, std::vector<std::string> q_paths, int q_num)
 
+int comp::compare(int argc, char** argv, int start_index, int end_index, std::vector<std::string> p_paths, std::vector<std::string> q_paths, int q_num)
 {
     int zero1 = 0;
     int* lq = &zero1;
@@ -114,14 +116,10 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
     int* lp = &zero2;
     std::string equal_path;
 
-    // checks for equal start node and end node 
+    // Checks for equal start node and end node 
     for (int* p = &start_index; (*p) < end_index; (*p)++) {
-        
-        
-        
         for (int q = 0; q < q_num; q++)
         {
-
             if (q_paths[q] == p_paths[*p] && q_paths[q] != "" && p_paths[*p] != "")
             {
 
@@ -130,13 +128,9 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
                 equal_path = q_paths[q];
                 q_paths[q] = "";
                 
-                
-
             }
-
         }
         
-
         if (*lq > 1)
         {
             for (int z = 0; z < end_index; z++)
@@ -146,9 +140,7 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
                     
                     p_paths[z] = "";
                     *lp = *lp + 1;
-                    
-                    
-                    
+  
                 }
             }    
         }
@@ -156,79 +148,76 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
         if (*p == end_index -1){
 
             if (*lp==0 && *lq==0){
-                /*
-                Uncomment if you want to print this to terminal
+                /* 
+                // Uncomment if you want to print this to terminal
                 std::cout << "none equal paths occurs" << "\n"; Uncomment if 
                 */
             }
 
             else{
                 /*
-                Uncomment if you want to print this to terminal
+                // Uncomment if you want to print this to terminal
                 std::cout <<  equal_path << " occurs " << *lq << " times in q and " <<  *lp << " times in p" << "\n";
                 */
             }
 
             /*
-            Uncomment if you want to use message-passing concurrency with ROS. This code sends out messages from a Publisher node. 
-            //ros::init(argc, argv, "Publisher");
-            //ros::NodeHandle nh;
-            //ros::Publisher topic_pub = nh.advertise<std_msgs::String>("results", 1000);
-
-            //ros::Rate loop_rate(1);
-
-            //std_msgs::String path;
-            //std_msgs::String message;
-            //std_msgs::String msg1;
-            //std_msgs::String msg2;
-            //std_msgs::String msg3;
-            //std_msgs::String msg4;
-
-            //std::string lp_str = std::to_string(*lp);
-            //std::string lq_str = std::to_string(*lq);
-            //std_msgs::String countlq;
-            //std_msgs::String countlp;
-
-            //path.data = equal_path;
-            //msg1.data = " occurs ";
-            //countlq.data = lq_str;
-            //msg2.data = " times in q ";
-            //countlp.data = lp_str;
-            //msg3.data = " times in p ";
-            //msg4.data = "none equal parts occurs";
-            //std_msgs::Int32 count;
-            //count.data = 0;
-
-            //if (*lp==0 && *lq==0){
-            //    message.data = msg4.data;
-            //}
-
-            //else{
-            //    message.data = path.data + msg1.data + countlq.data + msg2.data + countlp.data + msg3.data;
-            //}
+            // Uncomment if you want to use message-passing concurrency with ROS. This code sends out messages from a Publisher node. 
             
-        
-        
-        
-            //while (count.data < 3){
-            //    topic_pub.publish(message);
-            //    ros::spinOnce();
-            //    loop_rate.sleep();
-            //    ++count.data;
-            //}
+            // Initializes ROS publisher and topic
+            ros::init(argc, argv, "Publisher");
+            ros::NodeHandle nh;
+            ros::Publisher topic_pub = nh.advertise<std_msgs::String>("results", 1000);
+
+            ros::Rate loop_rate(1);
+
+            std_msgs::String path;
+            std_msgs::String message;
+            std_msgs::String msg1;
+            std_msgs::String msg2;
+            std_msgs::String msg3;
+            std_msgs::String msg4;
+
+            std::string lp_str = std::to_string(*lp);
+            std::string lq_str = std::to_string(*lq);
+            std_msgs::String countlq;
+            std_msgs::String countlp;
+
+            path.data = equal_path;
+            msg1.data = " occurs ";
+            countlq.data = lq_str;
+            msg2.data = " times in q ";
+            countlp.data = lp_str;
+            msg3.data = " times in p ";
+            msg4.data = "none equal parts occurs";
+            std_msgs::Int32 count;
+            count.data = 0;
+
+            if (*lp==0 && *lq==0){
+                message.data = msg4.data;
+            }
+
+            else{
+                message.data = path.data + msg1.data + countlq.data + msg2.data + countlp.data + msg3.data;
+            }
+            
+            // The publisher will publish 2 messages through ros topic "results"
+            while (count.data < 3){
+                topic_pub.publish(message);
+                ros::spinOnce();
+                loop_rate.sleep();
+                ++count.data;
+            }
             */
-
-
         }
-
     }
-
+    
     return 0;
-
 }
 
 
-/*Uncomment if you only want to run compare_paths without testing the efficiency.
+/* //Uncomment if you only want to run compare_paths without testing the efficiency.
+
 int main(int argc, char** argv) {
 
     comp::compare_paths(argc, argv);
@@ -237,10 +226,12 @@ int main(int argc, char** argv) {
 
 
 /*
-* This main function checks the run time of comparing_paths on multiple files. The function will first test on the result files with different number of paths found. 
-* This is done 1000 times and the results are written to TimeComparingPathsThread1.dat.  
-* Secondly, the function will test on result files with different amount of similar paths found. This is done 5000 times and the results are written to TimeComparingPathsThread2.dat.  
-*/
+ * This main function checks the run time of comparing_paths on multiple files. The function will 
+ * first test on the result files with different number of paths found. 
+ * This is done 1000 times and the results are written to TimeComparingPathsThread1.dat.  
+ * Secondly, the function will test on result files with different amount of similar paths found. 
+ * This is done 5000 times and the results are written to TimeComparingPathsThread2.dat.  
+ */
 int main() {
 
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of paths found
@@ -281,7 +272,7 @@ int main() {
 
 
 
-    // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of equal paths found
+    // Creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of equal paths found
     std::ofstream ("../../results/TimeComparingPathsThread2.dat");
     std::ofstream file2;
     file2.open("../../results/TimeComparingPathsThread2.dat", std::ios::out | std::ios::app);
@@ -314,14 +305,4 @@ int main() {
     }
 
     return 0;
-
-
-
 }
-
-
-
-
-
-
-
