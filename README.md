@@ -90,15 +90,25 @@ The code is noticeably faster with threading.
 
 
 ## Concurrency 
-- step by step without ROS
 
+### step by step
+#### Without ROS
+- uncomment for printing out results to terminal 
+- uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
+- Run "make" in terminal from folder "threadin_pkg/src"
+- Run "./threading-paths" in terminal from folder threading_pkg/src
+- Run "plot-timing.py" to plot the results from threading-paths.cpp that doesn't use ROS
 
-- step by step using ROS
--   run "catkin_make" in "catkin_ws" folder 
--   copy threading-paths and threading-paths.o from catkin_ws/devel/bin/ into threading_pkg/src folder 
--   uncomment for ROS concurrency in threading-paths.cpp 
--   uncomment for printing out results to terminal 
--   uncomment if you only want to run compare_paths without testing efficiency 
+#### Using ROS
+- uncomment for printing out results to terminal 
+- uncomment for ROS concurrency in threading-paths.cpp. Here you have to uncomment parts of the compare function. You also have to uncomment the included user-defined files or system header files.  
+- uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
+- Run "catkin_make" in "catkin_ws" folder
+- Copy the files threading-paths and threading-paths.o from  folder catkin_ws/devel/bin/ and paste those into threading_pkg/src folder 
+- Run "./threading-paths" in terminal from folder threading_pkg/src
+- Run "plot-timing.py" to plot the results from threading-paths.cpp, which uses ROS
+![image](https://user-images.githubusercontent.com/54395667/205754544-a2c6d364-1de1-4137-9416-4890c5eb1b12.png)
+
 
 
 ## Further work 
