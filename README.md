@@ -89,15 +89,17 @@ The code is noticeably faster with threading.
 
 ## Concurrency 
 - step by step without ROS
--  
+
+
 - step by step using ROS
--   run "catkin_make" in "catkin_ws" folder
+-   run "catkin_make" in "catkin_ws" folder 
 -   copy threading-paths and threading-paths.o from catkin_ws/devel/bin/ into threading_pkg/src folder 
 -   uncomment for ROS concurrency in threading-paths.cpp 
--   uncomment for printing out results to terminal
--   uncomment if you only want to run compare_paths without testing efficiency
+-   uncomment for printing out results to terminal 
+-   uncomment if you only want to run compare_paths without testing efficiency 
 
 
 ## Further work 
-
+- Track down the first queries, and assign p and q to either one of the paths. 
+- An easier way to implement the treading 
 
