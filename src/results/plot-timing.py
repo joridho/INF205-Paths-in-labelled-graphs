@@ -178,11 +178,13 @@ plt.savefig("plot-compare-paths1.png", bbox_inches='tight')
 plt.figure()
 plots = np.array(plot4[1:])
 plt.grid()
+plt.ylim(0.00046,0.00065)
 x_axis = ['0', '25', '50', '75', '100']
 plt.plot(x_axis, plots, linestyle = '--', linewidth=1, marker='o')
 
 plt.ylabel('Run-time [seconds]')
 plt.xlabel('Share of similar paths found')
+plt.title('Without threading')
 
 plt.savefig("plot-compare-paths2.png", bbox_inches='tight')
 
@@ -210,11 +212,13 @@ plt.savefig("plot-compare-paths-thread1.png", bbox_inches='tight')
 plt.figure()
 plots = np.array(plot6[1:])
 plt.grid()
+plt.ylim(0.00046,0.00065)
 x_axis = ['0', '25', '50', '75', '100']
 plt.plot(x_axis, plots, linestyle = '--', linewidth=1, marker='o')
 
 plt.ylabel('Run-time [seconds]')
 plt.xlabel('Share of similar paths found')
+plt.title('With threading')
 
 plt.savefig("plot-compare-paths-thread2.png", bbox_inches='tight')
 
