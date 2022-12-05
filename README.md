@@ -15,7 +15,7 @@ You run this code and it will run the most important file for comparing the path
 Compares the paths that is read from results.dat and writes out the similar paths 
 
 ##### time-comparing-paths.cpp
-Measures the run time for comparing-paths.cpp
+time-comparing-paths.cpp reads different pre-made result-files from src/results and uses these with comparing-paths.cpp and takes the time it takes to run. It is tested several times. 
 
 
 #### results 
