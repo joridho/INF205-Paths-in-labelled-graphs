@@ -8,10 +8,21 @@
 #include <string.h>
 #include <thread>
 #include "threading-paths.h"
-//#include "ros/ros.h"
-//#include "std_msgs/String.h"
-//#include "std_msgs/Int32.h"
+/* Uncomment if you want to use message-passing concurrency with ROS
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include "std_msgs/Int32.h"
+*/
 using namespace comp;
+
+/*
+ 
+/*
+* This function works almost the same as the compare_paths function in comparing-pths.cpp, but we have included threading with message passing. This function reads a file containing a start node and a end node for a path q or path p.
+* The paths will be divided into a vector for path p and a vector for path q. Then the code implements the compare function, which checks if there is a path p that has the same start node and end node as a path q, 
+* and will count the number of instances. The compare function will display the results on screen and use message-passing concurrency with ROS if wanted. The ROS code sends messages from a publisher node. 
+*/
+
 
 int comp::compare_paths(int argc, char** argv)
 {
@@ -27,6 +38,7 @@ int comp::compare_paths(int argc, char** argv)
         return EXIT_FAILURE;
     }
     
+    // counts the amounts of paths found in the file 
     std::string l; 
     int t = 0;
     std::vector<std::string> length;
@@ -36,6 +48,7 @@ int comp::compare_paths(int argc, char** argv)
         t = t + 1;
     }
 
+    // reads the file again
     std::ifstream indata(argv[1]); 
     if(!indata)
     {
@@ -45,6 +58,8 @@ int comp::compare_paths(int argc, char** argv)
     std::vector<std::string> q_paths;
     std::vector<std::string> p_paths;
     std::string line; 
+
+    // divides the results into path p and path q
     for (int m = 0; m < t-1; m++) {
         getline(indata, line); 
         std::string s1{line};
@@ -57,7 +72,7 @@ int comp::compare_paths(int argc, char** argv)
             q_paths.push_back(path);}
     }
 
-    
+    // counts instances of path p and path q
     int p_num = 0; 
     for (std::string i : p_paths){
         p_num = p_num +1;
@@ -67,6 +82,7 @@ int comp::compare_paths(int argc, char** argv)
         q_num = q_num +1;
     }
     
+    //Divide the vectors p_path and q_path into two parts for threading
     std::vector<std::string> p_path1(p_paths.begin(), p_paths.begin() + p_paths.size()/2);
     std::vector<std::string> p_path2(p_paths.begin() + p_paths.size()/2, p_paths.end());
 
@@ -79,6 +95,7 @@ int comp::compare_paths(int argc, char** argv)
     int q1 = q_path1.size();
     int q2 = q_path2.size();
 
+    //start threading, where each thread uses the compare function
     std::thread t1(&compare, argc, argv, 0, p1, p_path1, q_path1, q1);
     std::thread t2(&compare, argc, argv, 0, p2, p_path2, q_path2, q2);
     t1.join();
@@ -97,6 +114,7 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
     int* lp = &zero2;
     std::string equal_path;
 
+    // checks for equal start node and end node 
     for (int* p = &start_index; (*p) < end_index; (*p)++) {
         
         
@@ -138,14 +156,21 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
         if (*p == end_index -1){
 
             if (*lp==0 && *lq==0){
-                //std::cout << "none equal paths occurs" << "\n";
+                /*
+                Uncomment if you want to print this to terminal
+                std::cout << "none equal paths occurs" << "\n"; Uncomment if 
+                */
             }
 
             else{
-                //std::cout <<  equal_path << " occurs " << *lq << " times in q and " <<  *lp << " times in p" << "\n";
+                /*
+                Uncomment if you want to print this to terminal
+                std::cout <<  equal_path << " occurs " << *lq << " times in q and " <<  *lp << " times in p" << "\n";
+                */
             }
 
-            // Publisher 
+            /*
+            Uncomment if you want to use message-passing concurrency with ROS. This code sends out messages from a Publisher node. 
             //ros::init(argc, argv, "Publisher");
             //ros::NodeHandle nh;
             //ros::Publisher topic_pub = nh.advertise<std_msgs::String>("results", 1000);
@@ -191,6 +216,7 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
             //    loop_rate.sleep();
             //    ++count.data;
             //}
+            */
 
 
         }
@@ -202,13 +228,19 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
 }
 
 
+/*Uncomment if you only want to run compare_paths without testing the efficiency.
+int main(int argc, char** argv) {
 
-//int main(int argc, char** argv) {
+    comp::compare_paths(argc, argv);
+}
+/*
 
-//    comp::compare_paths(argc, argv);
-//}
 
-
+/*
+* This main function checks the run time of comparing_paths on multiple files. The function will first test on the result files with different number of paths found. 
+* This is done 1000 times and the results are written to TimeComparingPathsThread1.dat.  
+* Secondly, the function will test on result files with different amount of similar paths found. This is done 5000 times and the results are written to TimeComparingPathsThread2.dat.  
+*/
 int main() {
 
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of paths found
@@ -221,7 +253,6 @@ int main() {
     char* file;
     char* b;
     
-    // the name of the pre-made files with results
     std::string res1[10] = {"../../results/results16.dat", "../../results/results32.dat", "../../results/results64.dat", 
                     "../../results/results128.dat", "../../results/results256.dat", "../../results/results512.dat", 
                     "../../results/results1024.dat", "../../results/results2048.dat",
