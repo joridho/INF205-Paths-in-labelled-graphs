@@ -2,7 +2,7 @@
 // faculty of science and technology, NMBU
 // written with the following license: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-// Some changes were made to conditional_dfs at line 297-315. 
+// Some changes were made to conditional_dfs at line 294-321. 
 // Also some comments were added to the whole code, but nothing else were altered. 
 
 /* undirected incidence-list graph implementation */
