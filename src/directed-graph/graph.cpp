@@ -297,12 +297,21 @@ void Edge::conditional_dfs(Query* q, std::vector<std::string>::iterator q_rel_it
          throw std::ios_base::failure(std::strerror(errno));
       file.exceptions(file.exceptions() | std::ios::failbit | std::ifstream::badbit); 
 
+
+      std::ifstream ind("results.dat");
+      std::string l; 
+      int t = 0;
+      std::vector<std::string> length;
+      while (ind) {
+         getline(ind, l); 
+         length.push_back(l);
+         t = t + 1;
+      }
+
       int a = 0;
       std::string line;
 
-      auto size = std::filesystem::file_size("results.dat");
-
-      if (size % 2 == 0)
+      if (t % 2 == 0)
       { 
          file << "p <" << source_label << ">\t<" << this->get_target_label() << ">\n";  
       }

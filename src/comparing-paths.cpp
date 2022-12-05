@@ -97,7 +97,7 @@ int comp::compare_paths(int argc, char** argv)
                 }
             }
 
-            //std::cout << equal_path << "     occurs " << lq << " times in q and " <<  lp << " times in p" << std::endl;
+            std::cout << equal_path << "     occurs " << lq << " times in q and " <<  lp << " times in p" << std::endl;
         }
     }
     return 0;

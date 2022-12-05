@@ -28,3 +28,49 @@ The results of benchmarking the run-time is read by [plot_timing_inf205.py](src/
 ![](src/results/plot_compare-paths1.png)
 ![](src/results/plot_compare-paths2.png)
 
+## The code 
+##### config
+##### README.md
+### src
+
+folder containing 
+##### main.cpp
+
+main code to run everything 
+
+##### comparing-paths.cpp
+
+compares the path 
+
+##### time-comparing-paths.cpp
+
+measures the run time for comparing-paths.cpp
+
+#### results 
+
+folder containing results of everything 
+- the different files 
+
+#### directed-graph
+
+folder containing 
+
+##### run-graph.cpp
+
+...
+
+##### time-run-graph.cpp
+
+...
+
+##### graph.cpp
+
+...
+
+##### query.cpp
+
+...
+
+##### graph-benchmark.cpp
+
+...

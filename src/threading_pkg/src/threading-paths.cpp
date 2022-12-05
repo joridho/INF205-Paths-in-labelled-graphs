@@ -8,9 +8,9 @@
 #include <string.h>
 #include <thread>
 #include "threading-paths.h"
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "std_msgs/Int32.h"
+//#include "ros/ros.h"
+//#include "std_msgs/String.h"
+//#include "std_msgs/Int32.h"
 using namespace comp;
 
 int comp::compare_paths(int argc, char** argv)
@@ -212,9 +212,9 @@ int comp::compare(int argc, char** argv, int start_index, int end_index, std::ve
 int main() {
 
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of paths found
-    std::ofstream ("../../results/TimeComparingGraphThread1.dat");
+    std::ofstream ("../../results/TimeComparingPathsThread1.dat");
     std::ofstream file1;
-    file1.open("../../results/TimeComparingGraphThread1.dat", std::ios::out | std::ios::app);
+    file1.open("../../results/TimeComparingPathsThread1.dat", std::ios::out | std::ios::app);
 
     file1 << "Time for comparing-paths with different amounts of paths found" << std::endl;
     
@@ -222,11 +222,10 @@ int main() {
     char* b;
     
     // the name of the pre-made files with results
- 
-    //std::string res1[1] = {"results_thread/results100p.dat"};
-    std::string res1[7] = {"../../results/results16.dat", "../../results/results32.dat", "../../results/results64.dat", 
+    std::string res1[10] = {"../../results/results16.dat", "../../results/results32.dat", "../../results/results64.dat", 
                     "../../results/results128.dat", "../../results/results256.dat", "../../results/results512.dat", 
-                    "../../results/results1024.dat"};
+                    "../../results/results1024.dat", "../../results/results2048.dat",
+                "../../results/results4096.dat", "../../results/results8192.dat"};
     for (std::string i : res1)
     {   
         for (int z=0; z<1000; z++) 
@@ -252,19 +251,13 @@ int main() {
 
 
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of equal paths found
-    std::ofstream ("../../results/TimeComparingGraphThread2.dat");
+    std::ofstream ("../../results/TimeComparingPathsThread2.dat");
     std::ofstream file2;
-    file2.open("../../results/TimeComparingGraphThread2.dat", std::ios::out | std::ios::app);
+    file2.open("../../results/TimeComparingPathsThread2.dat", std::ios::out | std::ios::app);
     file2 << "Time for comparing-paths with 100 paths found but with different amount of similiar paths" << std::endl;
-
-    /*std::string res2[5] = {"results_thread/results0.dat", "results_thread/results25.dat", "results_thread/results50.dat", 
-                        "results_thread/results75.dat", "lammestek.txt"};   // the name of the pre-made files with results
-    
-    */
-
-    //std::string res2[1] = {"results_thread/results100p.dat"};   // the name of the pre-made files with results    
+  
     std::string res2[5] = {"../../results/results0.dat", "../../results/results25.dat", "../../results/results50.dat", 
-                        "../../results/results75.dat", "../../results/results100p.dat"};   // the name of the pre-made files with results
+                        "../../results/results75.dat", "../../results/results100.dat"};   // the name of the pre-made files with results
     
     for (std::string j : res2)
     {

@@ -19,9 +19,9 @@ using namespace std;
 int main ()
 {
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of paths found
-    ofstream ("results/TimeComparingGraph1.dat");
+    ofstream ("results/TimeComparingPaths1.dat");
     std::ofstream file1;
-    file1.open("results/TimeComparingGraph1.dat", std::ios::out | std::ios::app);
+    file1.open("results/TimeComparingPaths1.dat", std::ios::out | std::ios::app);
 
     file1 << "Time for comparing-paths with different amounts of paths found" << endl;
     
@@ -29,8 +29,9 @@ int main ()
     char* b;
     
     // the name of the pre-made files with results
-    string res1[7] = {"results/results16.dat", "results/results32.dat", "results/results64.dat", "results/results128.dat", 
-                "results/results256.dat", "results/results512.dat", "results/results1024.dat"};
+    string res1[10] = {"results/results16.dat", "results/results32.dat", "results/results64.dat", "results/results128.dat", 
+                "results/results256.dat", "results/results512.dat", "results/results1024.dat", "results/results2048.dat",
+                "results/results4096.dat", "results/results8192.dat"};
 
     for (string i : res1)
     {   
@@ -57,9 +58,9 @@ int main ()
 
 
     // creating a file for adding the time it takes to run comparing-paths.cpp with different amounts of equal paths found
-    ofstream ("results/TimeComparingGraph2.dat");
+    ofstream ("results/TimeComparingPaths2.dat");
     std::ofstream file2;
-    file2.open("results/TimeComparingGraph2.dat", std::ios::out | std::ios::app);
+    file2.open("results/TimeComparingPaths2.dat", std::ios::out | std::ios::app);
     file2 << "Time for comparing-paths with 100 paths found but with different amount of similiar paths" << endl;
 
     string res2[5] = {"results/results0.dat", "results/results25.dat", "results/results50.dat", 
