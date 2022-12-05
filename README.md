@@ -91,24 +91,24 @@ The code is noticeably faster with threading.
 
 ## Concurrency 
 
-### step by step
+### Step by step
 #### Without ROS
-- uncomment for printing out results to terminal 
-- uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
-- Run "make" in terminal from folder "threadin_pkg/src"
+- Uncomment for printing out results to terminal 
+- Uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
+- Run "make" in terminal from folder "threading_pkg/src"
 - Run "./threading-paths" in terminal from folder threading_pkg/src
 - Run "plot-timing.py" to plot the results from threading-paths.cpp that doesn't use ROS
 
 #### Using ROS
-- uncomment for printing out results to terminal 
-- uncomment for ROS concurrency in threading-paths.cpp. Here you have to uncomment parts of the compare function. You also have to uncomment the included user-defined files or system header files.  
-- uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
+- Uncomment for printing out results to terminal 
+- Uncomment for ROS concurrency in threading-paths.cpp. Here you have to uncomment parts of the compare function. You also have to uncomment the included user-defined files or system header files.  
+- Uncomment if you only want to run the function compare_paths in threading-paths.cpp. In other words not testing the efficiency in threading-paths.cpp
+- open new terminal and run "roscore" from folder catkin_ws
 - Run "catkin_make" in "catkin_ws" folder
-- Copy the files threading-paths and threading-paths.o from  folder catkin_ws/devel/bin/ and paste those into threading_pkg/src folder 
+- Copy the files threading-paths and threading-paths.o from  folder catkin_ws/devel/lib/threading_pkg and paste those into threading_pkg/src folder 
 - Run "./threading-paths" in terminal from folder threading_pkg/src
+- (Optional) open new terminal and run "rostopic echo /results" to recieve messages from "/results" topic
 - Run "plot-timing.py" to plot the results from threading-paths.cpp, which uses ROS
-
-
 
 ## Further work 
 - Track down the first queries, and assign p and q to either one of the paths. 
