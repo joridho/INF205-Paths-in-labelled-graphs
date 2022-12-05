@@ -10,11 +10,11 @@ Created on Thu Nov 24 09:32:58 2022
 import matplotlib.pyplot as plt
 import numpy as np
 
-file1 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeRunGraph.dat"
-file2 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingPaths1.dat"
-file3 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingPaths2.dat"
-file4 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingPathsThread1.dat"
-file5 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingPathsThread2.dat"
+file1 = "TimeRunGraph.dat"
+file2 = "TimeComparingPaths1.dat"
+file3 = "TimeComparingPaths2.dat"
+file4 = "TimeComparingPathsThread1.dat"
+file5 = "TimeComparingPathsThread2.dat"
 
 data1 = list(open(file1))
 

@@ -63,7 +63,6 @@ int run::run_graph(int argc, char** argv)
    return 0;
 }
 
-
 int main(int argc, char** argv)
 {
    run::run_graph(argc, argv);
