@@ -53,7 +53,30 @@ run-graph.cpp
 
 ## Performance 
 
+#### Run time for run-graph.cpp with different amount of nodes in the graph 
+First the time run time was tested for run-graph.cpp with different amount of nodes in the graph in every plot, and each plot had different query size was. 
+The run time appears to be linear with run time O(n), and the slope increases slightly when the query size increases. 
+<img src="/src/results/plot-run-graph1.png">
 
+#### Run time for run-graph.cpp with different query sizes
+Second the time run time was tested for run-graph.cpp with different query size in every plot, and each plot had different amount of nodes in the graph. 
+There can not be a query size that is longer than the amount of nodes in the graph. Therefore each plot has more and more points in accordance with the graph size. 
+The run time seems to be exponential O(n^2), and it takes longer with a bigger graph. 
+<img src="/src/results/plot-run-graph2.png">
+
+
+
+#### Run time for comparing the paths with different amounts of paths found 
+The run time for comparing the paths with different amounts of paths found was tested with and without threading. 
+The run time is linear O(n). 
+When there is a small amount of paths found the code with threading is slower, but when there is a large amount of paths found the code is slightly faster, but barely noticeable. If we tested on larger numbers we would probably be able to see a bigger difference. This could be something for further work. 
+<img src="/src/results/plot-compare-paths1.png"> <img src="/src/results/plot-compare-paths-thread1.png">
+
+#### Run time for comparing the paths with different amounts of equal paths found 
+The run time for comparing the paths with different amounts of equal paths found was tested with and without threading. 
+Without threading the run-time seems to be exponential (O(n^2)), but linear (O(n)) with threading. 
+The code is noticeably faster with threading. 
+<img src="/src/results/plot-compare-paths2.png"> <img src="/src/results/plot-compare-paths-thread2.png">
 
 ## Concurrency 
 
