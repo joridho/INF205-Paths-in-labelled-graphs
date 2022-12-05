@@ -9,14 +9,14 @@ The point of the project is to take in a labelled graph *g* and two sequences *p
 The folder containing the whole directory
 
 ##### main.cpp
-You run this code and it will run the most important file for comparing the paths. Running Makefile in src-folder is better. 
+You run this code and it will run the most important file for comparing the paths. However, running Makefile in src-folder is better. 
 
 ##### comparing-paths.cpp
-Compares the paths that is read from results.dat 
+Compares the paths that is read from results.dat and writes out the similar paths 
 
 ##### time-comparing-paths.cpp
 Measures the run time for comparing-paths.cpp
-nevn hvordan den funker og hva som blir tatt tid på 
+
 
 #### results 
 Folder containing all the different results 
@@ -27,18 +27,15 @@ Folder containing all the different results
 - 5 different .dat-files with the time it took to benchmark-testing 
 - kbt.dat and queryt.dat which contains data used to benchmark run-graph.cpp
 
+
 #### directed-graph
-Folder containing the code for creating the graph and finding valid paths to use in comparing-paths.
+Folder containing the code for creating the graph and finding valid paths to use in comparing-paths
 
 ##### graph-benchmark.cpp
-- Creates a graph which is written into file $kb.dat$ and the partitions p and , which are written into $query.dat$ file.
+Creates a graph which is written into file $kb.dat$ and the partitions p and , which are written into $query.dat$ file.
 
-##### query.cpp
 
-##### graph.cpp
-- 
-
-##### run-graph.cpp
+##### run-graph.cpp, graph.cpp and query.cpp
 - Implements the files kb.dat and query.dat to find the paths in the graph. 
 - Shows the paths in results.dat file. 
 
@@ -46,6 +43,7 @@ Folder containing the code for creating the graph and finding valid paths to use
 ##### time-run-graph.cpp
 - Implements graph-benchmark.cpp and run-graph.cpp
 - Tests the efficiency of the file run-graph.cpp
+
 
 #### threading_pkg 
 - Package containing the necessary files for message-passing concurrency with ROS
