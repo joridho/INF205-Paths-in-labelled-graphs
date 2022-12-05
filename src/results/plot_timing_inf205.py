@@ -10,10 +10,11 @@ Created on Thu Nov 24 09:32:58 2022
 import matplotlib.pyplot as plt
 import numpy as np
 
-file1 = "TimeRunGraph.dat"
-file2 = "TimeComparingGraph1.dat"
-file3 = "TimeComparingGraph2.dat"
-
+file1 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeRunGraph.dat"
+file2 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingGraph1.dat"
+file3 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/results/TimeComparingGraph2.dat"
+file4 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/threading_pkg/src/results_thread/TimeComparingGraph1.dat"
+file5 = "/Users/joridholmen/INF205/INF205-Paths-in-labelled-graphs/src/threading_pkg/src/results_thread/TimeComparingGraph2.dat"
 
 data1 = list(open(file1))
 
@@ -55,6 +56,8 @@ for l in df1:
 
 data2 = list(open(file2))
 data3 = list(open(file3))
+data4 = list(open(file4))
+data5 = list(open(file5))
 
 plot3 = []
 for i in data2:
@@ -66,8 +69,17 @@ for i in data2:
         plot3.append(sum(m)/len(m))
     except:
         plot3.append(i)
-
-
+        
+plot5 = []
+for i in data4:
+    try:
+        n = i.split("\t")
+        m = []
+        for j in n[0:-1]:
+            m.append(float(j))
+        plot5.append(sum(m)/len(m))
+    except:
+        plot5.append(i)
 
 plot4 = []
 for i in data3:
@@ -79,6 +91,19 @@ for i in data3:
         plot4.append(sum(m)/len(m))
     except:
         plot4.append(i)
+
+plot6 = []
+for i in data5:
+    try:
+        n = i.split("\t")
+        m = []
+        for j in n[0:-1]:
+            m.append(float(j))
+        plot6.append(sum(m)/len(m))
+    except:
+        plot6.append(i)
+
+
         
 #%% plot 1
 
@@ -103,7 +128,7 @@ for i in range(0,7):
                 linestyle = '--', linewidth=1, marker='o')
     axs[i].set_title(label=f'Query size {plot1[i][0][-2]}', fontsize=8)
 
-fig.savefig("plot_run-graph1.png", bbox_inches='tight')
+fig.savefig("plot_run-graph1.pdf", bbox_inches='tight')
     
 
 #%% plot 2
@@ -130,20 +155,20 @@ for i in range(0,5):
     axs[i].set_title(label=f'Graph with {nodes[i]} nodes', fontsize=8)
 fig.delaxes(axs[5])
         
-fig.savefig("plot_run-graph2.png", bbox_inches='tight')
+fig.savefig("plot_run-graph2.pdf", bbox_inches='tight')
 
 #%% plot 3
 
 plt.figure()
 plots = np.array(plot3[1:])
 plt.grid()
-x_axis = ['16', '32', '64', '128', '256', '512', '1024']
+x_axis = ['16', '32', '64', '128', '256', '512', '1024']#, '2048', '4096', '8192']
 plt.plot(x_axis, np.log(plots), linestyle = '--', linewidth=1, marker='o')
 
 plt.ylabel('Run-time in log scale [seconds]')
 plt.xlabel('Amount of paths found')
 
-plt.savefig("plot_compare-paths1.png", bbox_inches='tight')
+plt.savefig("plot_compare-paths1.pdf", bbox_inches='tight')
 
 
 #%% plot 4
@@ -157,4 +182,47 @@ plt.plot(x_axis, plots, linestyle = '--', linewidth=1, marker='o')
 plt.ylabel('Run-time [seconds]')
 plt.xlabel('Share of similar paths found')
 
-plt.savefig("plot_compare-paths2.png", bbox_inches='tight')
+plt.savefig("plot_compare-paths2.pdf", bbox_inches='tight')
+
+
+#%% plot 5 
+
+plt.figure()
+plots = np.array(plot5[1:])
+plt.grid()
+x_axis = ['16', '32', '64', '128', '256', '512', '1024']#, '2048', '4096', '8192']
+plt.plot(x_axis, np.log(plots), linestyle = '--', linewidth=1, marker='o')
+
+plt.ylabel('Run-time in log scale [seconds]')
+plt.xlabel('Amount of paths found')
+
+plt.savefig("plot_compare-paths_thread1.pdf", bbox_inches='tight')
+
+
+
+
+#%% plot 6
+
+plt.figure()
+plots = np.array(plot6[1:])
+plt.grid()
+x_axis = ['0', '25', '50', '75', '100']
+plt.plot(x_axis, plots, linestyle = '--', linewidth=1, marker='o')
+
+plt.ylabel('Run-time [seconds]')
+plt.xlabel('Share of similar paths found')
+
+plt.savefig("plot_compare-paths_thread2.pdf", bbox_inches='tight')
+
+
+
+
+
+
+
+
+
+
+
+
+
