@@ -48,10 +48,11 @@ run-graph.cpp
 ###### threading-paths.cpp
 
 
-## How to use the code 
+## How does it work and how to use it
 
 
 ## Performance 
+
 
 
 ## Concurrency 
