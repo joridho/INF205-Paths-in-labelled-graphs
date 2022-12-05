@@ -3,6 +3,7 @@
 The point of the project is to take in a labelled graph *g* and two sequences *p* and *q* of edge labels and check if there exist a path *p* and a path *q* that contains the same start node and end node. 
 
 ## The code 
+<img src="directory-tree.png">
 
 ### src
 The folder containing the whole directory
