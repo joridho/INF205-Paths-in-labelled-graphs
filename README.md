@@ -32,17 +32,14 @@ Folder containing all the different results
 Folder containing the code for creating the graph and finding valid paths to use in comparing-paths
 
 ##### graph-benchmark.cpp
-Creates a graph which is written into file $kb.dat$ and the partitions p and , which are written into $query.dat$ file.
+Creates a graph which is written into file $kb.dat$ and the partitions p and q, which are written into $query.dat$ file.
 
 
 ##### run-graph.cpp, graph.cpp and query.cpp
-- Implements the files kb.dat and query.dat to find the paths in the graph. 
-- Shows the paths in results.dat file. 
-
+run-graph.spp reads the files kb.dat and query.dat and uses graph.cpp and query.cpp to find the paths in the graph. The paths is written to results.dat. 
 
 ##### time-run-graph.cpp
-- Implements graph-benchmark.cpp and run-graph.cpp
-- Tests the efficiency of the file run-graph.cpp
+time-run-graph.cpp creates kbt.dat and queryt.dat with different input. Then it uses these files to take the time it takes to run comparing-paths.cpp. It is tested several times and written to a file. 
 
 
 #### threading_pkg 
