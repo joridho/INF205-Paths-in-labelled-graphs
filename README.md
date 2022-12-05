@@ -112,5 +112,5 @@ The code is noticeably faster with threading.
 
 ## Further work 
 - Track down the first queries, and assign p and q to either one of the paths. 
-- An easier way to implement the treading 
+- An easier way to implement the threading 
 - Most likely memory leak 
