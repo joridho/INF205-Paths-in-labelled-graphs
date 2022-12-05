@@ -103,7 +103,7 @@ for i in range(0,7):
                 linestyle = '--', linewidth=1, marker='o')
     axs[i].set_title(label=f'Query size {plot1[i][0][-2]}', fontsize=8)
 
-fig.savefig("plot_run-graph1.pdf", bbox_inches='tight')
+fig.savefig("plot_run-graph1.png", bbox_inches='tight')
     
 
 #%% plot 2
@@ -130,7 +130,7 @@ for i in range(0,5):
     axs[i].set_title(label=f'Graph with {nodes[i]} nodes', fontsize=8)
 fig.delaxes(axs[5])
         
-fig.savefig("plot_run-graph2.pdf", bbox_inches='tight')
+fig.savefig("plot_run-graph2.png", bbox_inches='tight')
 
 #%% plot 3
 
@@ -143,7 +143,7 @@ plt.plot(x_axis, np.log(plots), linestyle = '--', linewidth=1, marker='o')
 plt.ylabel('Run-time in log scale [seconds]')
 plt.xlabel('Amount of paths found')
 
-plt.savefig("plot_compare-paths1.pdf", bbox_inches='tight')
+plt.savefig("plot_compare-paths1.png", bbox_inches='tight')
 
 
 #%% plot 4
@@ -157,11 +157,4 @@ plt.plot(x_axis, plots, linestyle = '--', linewidth=1, marker='o')
 plt.ylabel('Run-time [seconds]')
 plt.xlabel('Share of similar paths found')
 
-plt.savefig("plot_compare-paths2.pdf", bbox_inches='tight')
-
-
-
-
-
-
-
+plt.savefig("plot_compare-paths2.png", bbox_inches='tight')

@@ -1,3 +1,6 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
-\contentsline {chapter}{\numberline {1}INF205-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Paths-\/in-\/labelled-\/graphs}{1}{chapter.1}%
-\contentsline {subsubsection}{\numberline {1.0.0.1}Halla}{1}{subsubsection.1.0.0.1}%
+\contentsline {chapter}{\numberline {1}INF205 Paths in labelled graphs}{1}{chapter.1}%
+\contentsline {subsubsection}{\numberline {1.0.0.1}Programming project in INF205 Resource-\/efficient programming at NMBU}{1}{subsubsection.1.0.0.1}%
+\contentsline {subsection}{\numberline {1.0.1}Run the full program}{1}{subsection.1.0.1}%
+\contentsline {subsection}{\numberline {1.0.2}Benchmark run-\/time}{1}{subsection.1.0.2}%
+\contentsline {subsection}{\numberline {1.0.3}Plot run-\/time}{1}{subsection.1.0.3}%

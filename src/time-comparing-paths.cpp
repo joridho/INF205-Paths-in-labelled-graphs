@@ -63,7 +63,7 @@ int main ()
     file2 << "Time for comparing-paths with 100 paths found but with different amount of similiar paths" << endl;
 
     string res2[5] = {"results/results0.dat", "results/results25.dat", "results/results50.dat", 
-                        "results/results75.dat", "results/results100p.dat"};   // the name of the pre-made files with results
+                        "results/results75.dat", "results/results100.dat"};   // the name of the pre-made files with results
     for (string j : res2)
     {
         for (int z=0; z<5000; z++) 

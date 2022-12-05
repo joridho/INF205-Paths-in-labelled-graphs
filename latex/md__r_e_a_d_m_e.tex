@@ -1,0 +1,15 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsubsection{Programming project in INF205 Resource-\/efficient programming at NMBU}\label{md__r_e_a_d_m_e_autotoc_md1}
+The point of the project is to take in a labelled graph {\itshape g} and two sequences {\itshape p} and {\itshape q} of edge labels and check if there exist a path {\itshape p} and a path {\itshape q} that contains the same start node and end node.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{Run the full program}\label{md__r_e_a_d_m_e_autotoc_md2}
+To run the full program you go into the \href{src/}{\texttt{ src}}-\/folder and type {\itshape make} in the terminal.
+
+First the makefile will go into the \href{src/directed-graph}{\texttt{ directed-\/graph}}-\/folder and runs the \href{src/directed-graph/Makefile}{\texttt{ makefile}} for this directory. This makefile will run \href{src/directed-graph/run-graph.cpp}{\texttt{ run-\/graph.\+cpp}} which contains code from run-\/graph.\+h graph.\+h, query.\+h and graph-\/benchmark.\+h
+
+After the \href{src/directed-graph/Makefile}{\texttt{ makefile}} from \href{src/directed-graph}{\texttt{ directed-\/graph}} is ran, the \href{src/Makefile}{\texttt{ makefile}} in \href{src/}{\texttt{ src}} will run the \href{src/main.cpp}{\texttt{ main.\+cpp}} which contains functions form comparing-\/paths.\+h.\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Benchmark run-\/time}\label{md__r_e_a_d_m_e_autotoc_md3}
+The run-\/time has been tested on \href{src/directed-graph/run-graph.cpp}{\texttt{ run-\/graph.\+cpp}} and \href{src/directed-graph}{\texttt{ directed-\/graph}}.
+
+The run-\/time for run-\/graph.\+cpp is tested in \href{src/directed-graph/time-run-graph.cpp}{\texttt{ time-\/run-\/graph.\+cpp}} in \href{src/directed-graph}{\texttt{ src/directed-\/graph}}. The time is written to \href{src/results/TimeRunGraph.dat}{\texttt{ Time\+Run\+Graph.\+dat}} in \href{src/results}{\texttt{ src/results}}.
+
+The run-\/time for \href{src/comparing-paths.cpp}{\texttt{ comparing-\/paths.\+cpp}} is tested in \href{src/time-comparing-paths.cpp}{\texttt{ time-\/comparing-\/paths.\+cpp}} in \href{src/}{\texttt{ src}}. The time is written to \href{src/results/TimeComparingPaths1.dat}{\texttt{ Time\+Comparing\+Paths1.\+dat}} and \href{src/results/TimeComparingPaths2.dat}{\texttt{ Time\+Comparing\+Paths2.\+dat}} in \href{src/results/}{\texttt{ src/results}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{Plot run-\/time}\label{md__r_e_a_d_m_e_autotoc_md4}
+The results of benchmarking the run-\/time is read by \href{src/results/plot_timing_inf205.py}{\texttt{ plot\+\_\+timing\+\_\+inf205.\+py}}. The mean of the time is calculated and then plotted.
+
+    
