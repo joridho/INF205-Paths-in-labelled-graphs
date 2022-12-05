@@ -53,7 +53,9 @@ time-run-graph.cpp creates kbt.dat and queryt.dat with different input. Then it 
 
 
 ## How does it work and how to use it
-
+The code starts by generating the graph by using graph-benchmark.cpp. You can choose the number of nodes and query size in /src/directed-graph/Makefile on line 3, where the different variables are in the following order; ./run-graph <number of nodes> <query size> <kb.dat> <query.dat> 1
+  
+To be able to run the correct Makefile you need to change folder to src, and run 'make' in terminal. Shortly the results will appear in terminal where you have all the similar paths compared from results.dat.
 
 ## Performance 
 ### Run time for run-graph.cpp with different amount of nodes in the graph 
