@@ -107,7 +107,6 @@ The code is noticeably faster with threading.
 - Copy the files threading-paths and threading-paths.o from  folder catkin_ws/devel/bin/ and paste those into threading_pkg/src folder 
 - Run "./threading-paths" in terminal from folder threading_pkg/src
 - Run "plot-timing.py" to plot the results from threading-paths.cpp, which uses ROS
-![image](https://user-images.githubusercontent.com/54395667/205754544-a2c6d364-1de1-4137-9416-4890c5eb1b12.png)
 
 
 
